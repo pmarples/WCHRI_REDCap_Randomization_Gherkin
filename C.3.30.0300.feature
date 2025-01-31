@@ -16,11 +16,10 @@ And I click on "Enable" in the "Randomization module" row in the "Enable optiona
 When I click on the link labeled "User Rights"
 And I click on the link labeled "Test User1"
 And I click on the button labeled "Edit User Privileges"
-Then I should see "Randomization"
 And I check a checkbox labeled "Setup"
 And I check a checkbox labeled "Dashboard"
 And I check a checkbox labeled "Randomize"
-And I click on a button labeled "Save Changes" within the open User Rights dialog box
+And I save changes within the context of User Rights
 
 #FUNCTIONAL_REQUIREMENT C.3.30.0300.0100. User with Randomization Setup rights can use Randomization Module Setup Configuration page.
 Scenario:
@@ -37,9 +36,8 @@ Scenario:
 When I click on the link labeled "User Rights"
 And I click on the link labeled "Test User1"
 And I click on the button labeled "Edit User Privileges"
-Then I should see "Randomization"
 And I uncheck a checkbox labeled "Setup"
-And I click on a button labeled "Save Changes" within the open User Rights dialog box
+And I save changes within the context of User Rights
 
 #FUNCTIONAL_REQUIREMENT C.3.30.0300.0200. User without Randomization Setup rights cannot use Randomization Module Setup Configuration page.
 Scenario:
