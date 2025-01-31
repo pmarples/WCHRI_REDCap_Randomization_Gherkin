@@ -8,7 +8,7 @@ Scenario:
 Given I login to REDCap with the user "Test_User1"
 And I create a new project named "C.3.30.0300" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "Project 3.30 norand.xml", and clicking the "Create Project" button
 
-#SETUP Randomization and User Rights
+#SETUP Randomization and User Rights (Give User all Rand Rights)
 Scenario:
 When I click on the link labeled "Project Setup"
 And I click on "Enable" in the "Randomization module" row in the "Enable optional modules and customizations" section
@@ -32,7 +32,7 @@ When I click on a button labeled "Add new randomization module"
 #HOW TO EXPLAIN THIS NEXT LINE?
 Then I should see a dialog containing the following text: "STEP 1: Define your randomization model" 
 
-#SETUP User Rights
+#SETUP User Rights (Takeaway User Rand - Setup Rights)
 Scenario: 
 When I click on the link labeled "User Rights"
 And I click on the link labeled "Test User1"
