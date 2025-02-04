@@ -17,7 +17,6 @@ When I click on the link labeled "User Rights"
 And I click on the link labeled "Test User1"
 And I click on the button labeled "Edit User Privileges"
 And I check a checkbox labeled "Dashboard"
-And I check a checkbox labeled "Randomize"
 And I save changes within the context of User Rights
 
 #FUNCTIONAL_REQUIREMENT C.3.30.0300.0100. User with Randomization Setup rights can use Randomization Module Setup Configuration page.
