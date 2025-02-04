@@ -16,7 +16,6 @@ And I click on "Enable" in the "Randomization module" row in the "Enable optiona
 When I click on the link labeled "User Rights"
 And I click on the link labeled "Test User1"
 And I click on the button labeled "Edit User Privileges"
-And I check a checkbox labeled "Setup"
 And I check a checkbox labeled "Dashboard"
 And I check a checkbox labeled "Randomize"
 And I save changes within the context of User Rights
