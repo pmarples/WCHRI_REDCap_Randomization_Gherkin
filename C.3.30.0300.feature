@@ -27,7 +27,7 @@ When I click on the link labeled "Randomization"
 Then I should see a button labeled "Add new randomization module"
 
 ##VERIFY User with Randomization Setup rights can use Randomization Module Setup Configuration page.
-When I click on a button labeled "Add new randomization module"
+When I click on a button labeled "Add new randomization model"
 #HOW TO EXPLAIN THIS NEXT LINE?
 Then I should see a dialog containing the following text: "STEP 1: Define your randomization model" 
 
