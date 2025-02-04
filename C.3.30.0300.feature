@@ -29,7 +29,8 @@ Then I should see a button labeled "Add new randomization module"
 ##VERIFY User with Randomization Setup rights can use Randomization Module Setup Configuration page.
 When I click on a button labeled "Add new randomization model"
 #HOW TO EXPLAIN THIS NEXT LINE?
-Then I should see a dialog containing the following text: "STEP 1: Define your randomization model" 
+Then I should see a tab labeled "Setup" 
+And I should see "STEP 1: Define your randomization model" 
 
 #SETUP User Rights (Takeaway User Rand - Setup Rights)
 Scenario: 
