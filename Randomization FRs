@@ -47,6 +47,7 @@ C.3.30.700 User Interface: The system shall ensure users with Randomization Setu
 .500: Randomize by group/site enabled with DAG selected.
 .600: Randomize by group/site enabled with an existing field selected.
 
+# C: Randomization field options C.3.30.0700.0700 to C.3.30.0700.0900
 .700: Choose open randomization dropdown field.
 .800: Choose open randomization radio field.
 .900: Choose concealed randomization text field.
