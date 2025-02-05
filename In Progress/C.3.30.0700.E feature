@@ -6,14 +6,15 @@ create project with project 3.30 Rand
 Add test user to full rights
 Log in with Test user.
 
-.1200: Download example allocation tables (Excel/CSV).
-.1300: Upload unique allocation table in DEVELOPMENT status (error if duplicated).
-.1400: Download allocation table in DEVELOPMENT status.
-.1500: Delete allocation table in DEVELOPMENT status.
-.1600: Upload unique allocation table in PRODUCTION status  (error if duplicated).
-.1700: Download allocation table in PRODUCTION status.
-.1800: Delete allocation table in PRODUCTION status (admin-only).
+C.3.30.0700.1200: Download example allocation tables (Excel/CSV).
+click on Randomization
+beside rand_group
 
-
+C.3.30.0700.1300: Upload unique allocation table in DEVELOPMENT status (error if duplicated).
+C.3.30.0700.1400: Download allocation table in DEVELOPMENT status.
+C.3.30.0700.1500: Delete allocation table in DEVELOPMENT status.
+C.3.30.0700.1600: Upload unique allocation table in PRODUCTION status  (error if duplicated).
+C.3.30.0700.1700: Download allocation table in PRODUCTION status.
+C.3.30.0700.1800: Delete allocation table in PRODUCTION status (admin-only).
 
 log out
