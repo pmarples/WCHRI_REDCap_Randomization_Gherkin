@@ -21,7 +21,7 @@ Click Save randomization model
 Verify success Success! The randomization model has been saved!
 and click randomization
 verify simple_rand in the list
-loggin: verify see Save randomization model 
+logging: verify see Save randomization model 
 
 C.3.30.0700.1100: Erase randomization model.
 Click setup beside simple_rand
