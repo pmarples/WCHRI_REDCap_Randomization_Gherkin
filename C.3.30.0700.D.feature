@@ -36,7 +36,7 @@ Click Erase randomization model
 then I should see popup that says Erase Randomization model
 Click Okay
 verify message Success! Your randomization setup and all allocations have now been erased.
-verify simple_rand no longer in list.
+Click Randomization and verify simple_rand no longer in target column.
 
 Logging - verify see Erase randomization model and allocations
 
