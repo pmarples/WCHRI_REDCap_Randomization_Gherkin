@@ -1,0 +1,119 @@
+A.3.30 Control Center: The system shall support enabling or disabling the Randomization module system-wide.
+·  .100: Enabled at system level allows randomization module option at the project level.
+·  .200: Disabled at system level removes randomization module option at the project level.
+
+There is a document that has the “STATE AFTER A” that will tell me what settings are enabled at the start of each.- adam resets the state after each.
+C.3.30. User Interface: The system shall allow enabling/disabling Randomization at the project level.
+·  .100: Enabling adds randomization module to project setup.
+·  .200: Enabling adds randomization module to application box.
+·  .300: Enabling adds randomization module to user rights.
+·  .400: Disabling removes randomization module from project setup.
+·  .500: Disabling removes randomization module from application box.
+·  .600: Disabling removes randomization module from user rights.
+ 
+A.3.30.100 Control Center: The system shall support enabling or disabling the Randomization module system-wide.
+.100: Enabled at system level allows randomization module option at the project level.
+.200: Disabled at system level removes randomization module option at the project level.
+
+C.3.30.200 User Interface: The system shall allow enabling/disabling Randomization at the project level.
+.100: Enabling adds randomization module to project setup.
+.200: Enabling adds randomization module to application box.
+.300: Enabling adds randomization module options Setup, Dashboard, and Randomize to user rights privilege setup page.
+.400: Disabling removes randomization module from project setup.
+.500: Disabling removes randomization module from application box.
+.600: Disabling removes randomization module options Setup, Dashboard, and Randomize to user rights privilege setup page.
+
+C.3.30.0300 User Interface: The system shall allow user rights configuration to create and manage Randomization Setup.
+.100: User with Randomization Setup rights can use Randomization Module Setup Configuration page.
+.200: User without Randomization Setup rights cannot use Randomization Module Setup Configuration page.
+
+C.3.30.0400 User Interface: The system shall allow user rights configuration to access the Randomization Dashboard.
+.100: User with Randomization Dashboard rights can use Randomization Module Dashboard page.
+.200: User without Randomization Dashboard rights cannot use Randomization Module Dashboard page.
+
+C.3.30.0500 User Interface: The system shall allow user rights configuration to enable the Randomization Randomize privilege.
+.100: User with Randomization Randomize rights can Randomize.
+.200: User without Randomization Randomize rights cannot Randomize.
+
+C.3.30.0600 User Interface: The system shall support stratified randomization by Data Access Group (DAG) and restrict user access based on their DAG assignment.
+.100: Users within a DAG can randomize records only within their assigned DAG, ensuring they cannot view or randomize records outside their group.
+.200: The randomization model shall support stratification by DAG, allowing independent randomization assignments within each DAG.
+C.3.30.700 User Interface: The system shall ensure users with Randomization Setup can create and modify randomization models while in project development mode.
+.100: Disable stratified randomization.
+.200: Enable stratified randomization with one stratum.
+.300: Enable stratified randomization with up to 14 strata (test all 14).
+
+.400: Randomize by group/site enabled with no option selected.
+.500: Randomize by group/site enabled with DAG selected.
+.600: Randomize by group/site enabled with an existing field selected.
+
+.700: Choose open randomization dropdown field.
+.800: Choose open randomization radio field.
+.900: Choose concealed randomization text field.
+.1000: Save randomization model.
+.1100: Erase randomization model.
+
+.1200: Download example allocation tables (Excel/CSV).
+.1300: Upload unique allocation table in DEVELOPMENT status (error if duplicated).
+.1400: Download allocation table in DEVELOPMENT status.
+.1500: Delete allocation table in DEVELOPMENT status.
+
+.1600: Upload unique allocation table in PRODUCTION status  (error if duplicated).
+.1700: Download allocation table in PRODUCTION status.
+.1800: Delete allocation table in PRODUCTION status (admin-only).
+
+C.3.30.800 User Interface: The system shall ensure users with Randomization Setup can create or modify the automatic triggering options: Manual, Users with Randomize permission, all users (including survey).
+.100: Manual only, using Randomize button (default)
+.200: Trigger logic, for users with Randomize permissions only
+.300 Trigger logic, for all users based on form
+.400 Trigger logic, for all users based on survey
+.500 Modify trigger while in production
+
+C.3.30.900 User Interface: The system shall ensure users with Randomization Setup rights lock randomization models and allocation table while in production mode.
+.100: Normal user cannot modify setup in production.
+.200: Admin user unable to revert project to development.
+.300: Admin cannot modify setup in production.
+.400: Admin can download existing allocation table in production.
+.500: Admin cannot modify existing allocation table in production.
+.600: Admin can upload additional allocations to existing table in production.
+                                                             
+C.3.30.1000 User Interface: The system shall support the sequential assignment of allocation table entries to participants based on stratification.
+.100: Upload allocation table without sequential assignment causes error
+.200: Upload allocation table with sequential assignment
+                                                             
+C.3.30.1100 User Interface: The system shall ensure users with Randomize rights can execute record randomization.
+.100: User without randomize rights cannot randomize record.
+.200: User with randomize rights can randomize record.
+.300: Record’s randomized value matches allocation table.
+.400 User with randomize rights cannot modify randomized record.
+                                                             
+C.3.30.1200 User Interface: The system shall support an audit trail showing who randomized the record and the date-time of randomization.
+.100: Logging of record’s randomization includes user and timestamp.
+.200: Users with logging privileges and without randomization privileges will not see record’s randomized values.
+                                                             
+C.3.30.1300 User Interface: The system shall support inclusion of randomization values in data export.
+.100: Export data with randomized values is accurate to allocation table
+                                                             
+C.3.30.1400 User Interface: The system shall support single randomization per model and multiple randomizations per record.
+.100: Export data with randomized values is accurate to allocation table
+                                                             
+C.3.30.1500 User Interface: The system shall support the blinded/concealed randomizations of records from users.
+.100 Blinded user cannot view allocation
+.200 Blinded user cannot export allocation
+.300 Unblinded user can view allocation
+.400 Unblinded user can export allocation
+                                                             
+C.3.30.1600 User Interface: The system shall ensure users with randomization dashboard rights can view the randomization dashboard.
+.100: User without dashboard rights cannot access randomization dashboard.
+.200: User with dashboard rights cannot access randomization dashboard.
+                                                             
+C.3.30.1700 Project Interface Administrator Access: The system shall support administrator-only access to the randomization module’s View Allocation Table page.
+.100: Admin accesses View Allocation Table page.
+.200: User with dashboard rights cannot access View Allocation Table.
+                                                             
+C.3.30.1800  Project Interface Administrator Access: The system shall support the administrator role’s ability to perform the following actions with specifying the reason on the randomization module allocation table: perform edit target field, edit target allocation, manual randomization, and make sequence unavailable.
+.100: Admin can edit target field with reason.
+.200: Admin can edit target alternative with reason.
+.300: Admin can manually randomize a record with reason.
+.400: Admin can mark a sequence as unavailable with reason.
+.500: Admin can restore allocation with reason.
