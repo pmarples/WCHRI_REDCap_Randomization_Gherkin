@@ -8,7 +8,7 @@ Log in with Test user.
 
 C.3.30.0700.1200: Download example allocation tables (Excel/CSV).
 click on Randomization
-beside rand_group
+beside simple_rand
 
 C.3.30.0700.1300: Upload unique allocation table in DEVELOPMENT status (error if duplicated).
 C.3.30.0700.1400: Download allocation table in DEVELOPMENT status.
