@@ -28,6 +28,7 @@ Click "Use Data Access Groups to designate each group/site"
 Select randomization field simple_rand
 Click Save randomizaiton model
 Verify success  Success! The randomization model has been saved!
+Click randomization and verify Data Access group in Stratification column beside simple_rand
 
 C.3.30.0700.0600: Randomize by group/site enabled with an existing field selected.
 Click Randomization
@@ -38,5 +39,6 @@ Select existing_dags
 Select randomization field complex_rand
 Click Save randomization model
 Verify success Success! The randomization model has been saved!
+Click randomization and verify existing_dags in Stratification column beside complex_rand
 
 Note - I don't see any new logging to add
