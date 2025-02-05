@@ -6,4 +6,7 @@ create project with project 3.30 Rand
 Add test user to full rights
 Log in with Test user.
 
-C.3.30.0700.0700
+C.3.30.0700.0700: Choose open randomization dropdown field.
+C.3.30.0700.0800: Choose open randomization radio field.
+C.3.30.0700.0900: Choose concealed randomization text field.
+
