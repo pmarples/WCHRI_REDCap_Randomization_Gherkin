@@ -28,6 +28,7 @@ Save randomization model
 
 verify
 Saved successfully with one strat variable.
+Check Logging module and verify that the above randomization steps are logged appropriately. (think it may only say "Save randomization model")
 
 C.3.30.0700.0300: Enable stratified randomization with up to 14 strata (test all 14).
 Setup: Click "summary"
@@ -65,3 +66,5 @@ verify no option to add another stratum
 
 Save Randomization model
 verify project saved successfully.
+
+Check Logging module and verify that the above randomization steps are logged appropriately. (only include if different from the last logging check)
