@@ -1,0 +1,19 @@
+Feature: C.3.30.0700 User Interface: The system shall ensure users with Randomization Setup can create and modify randomization models while in project development mode. 
+# E: Randomization Allocation tables C.3.30.0700.1200 to C.3.30.0700.1800
+
+Setup: 
+create project with project 3.30 Rand
+Add test user to full rights
+Log in with Test user.
+
+.1200: Download example allocation tables (Excel/CSV).
+.1300: Upload unique allocation table in DEVELOPMENT status (error if duplicated).
+.1400: Download allocation table in DEVELOPMENT status.
+.1500: Delete allocation table in DEVELOPMENT status.
+.1600: Upload unique allocation table in PRODUCTION status  (error if duplicated).
+.1700: Download allocation table in PRODUCTION status.
+.1800: Delete allocation table in PRODUCTION status (admin-only).
+
+
+
+log out
