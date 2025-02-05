@@ -1,4 +1,5 @@
-C.3.30.0700 User Interface: The system shall ensure users with Randomization Setup can create and modify randomization models while in project development mode.
+#C.3.30.0700 User Interface: The system shall ensure users with Randomization Setup can create and modify randomization models while in project development mode. 
+#A: Stratified Randomization .0100 to .0300
 
 C.3.30.0700.0100: Disable stratified randomization.
 C.3.30.0700.0200: Enable stratified randomization with one stratum.
