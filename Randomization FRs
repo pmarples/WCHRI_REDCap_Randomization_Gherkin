@@ -50,6 +50,7 @@ C.3.30.700 User Interface: The system shall ensure users with Randomization Setu
 .700: Choose open randomization dropdown field.
 .800: Choose open randomization radio field.
 .900: Choose concealed randomization text field.
+
 .1000: Save randomization model.
 .1100: Erase randomization model.
 
