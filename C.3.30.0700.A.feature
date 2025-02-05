@@ -28,6 +28,7 @@ Save randomization model
 
 verify
 Saved successfully with one strat variable.
+click randomization and check strat variable appears under stratification column beside the simple_rand target.
 Check Logging module and verify that the above randomization steps are logged appropriately. (think it may only say "Save randomization model")
 
 C.3.30.0700.0300: Enable stratified randomization with up to 14 strata (test all 14).
@@ -66,5 +67,6 @@ verify no option to add another stratum
 
 Save Randomization model
 verify project saved successfully.
+click randomization and check strat variables appears under stratification column beside the complex_rand target.
 
 Check Logging module and verify that the above randomization steps are logged appropriately. (only include if different from the last logging check)
