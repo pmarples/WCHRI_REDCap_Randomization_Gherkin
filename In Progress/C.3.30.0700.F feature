@@ -1,5 +1,7 @@
 Feature: C.3.30.0700 User Interface: The system shall ensure users with Randomization Setup can create and modify randomization models while in project development mode. 
 # F: Randomization Allocation tables for use in PRODUCTION status C.3.30.0700.1600 to C.3.30.0700.1800
+NOTE to NOAH: 1600-1800 are the same as 1300-1500 but Development and Production are switched.
+
 
 Setup: 
 create project with project 3.30AlloRand.xml
@@ -24,17 +26,23 @@ And I see Upload allocation table (csv file) for use in PRODUCTION Status still 
 for Upload allocation table (csv file) for use in PRODUCTION Status
 Choose File AlloRand2
 Click Upload file
-File successfuly uploads and I see "Allready uploaded"
+File successfuly uploads and I see "Already uploaded"
 And I see Delete allocation table 
 and I see Download table.
+Click logging and I see Upload randomization allocation table - production
 
 C.3.30.0700.1700: Download allocation table in PRODUCTION status.
-for Upload allocation table (CSV file) for use in PRODUCTION status
+Click Randomization
+Click Setup next to allo_rand
+For Upload allocation table (CSV file) for use in PRODUCTION status
 Click download table
 File RandomizationAllocationTable_Dev downloads
 #Is there a way to check that RandomizationAllocationTable_Dev matches AlloRand2?
+Click logging and I see Download randomization allocation table (production)
 
 C.3.30.0700.1800: Delete allocation table in PRODUCTION status.
+Click Randomization
+Click Setup next to allo_rand
 for Upload allocation table (CSV file) for use in PRODUCTION status
 Click Delete Allocation table
 popup "delete allocation table"
@@ -54,5 +62,6 @@ popup "delete allocation table"
 Ok
 then I see  Success! The allocation table has been deleted.
 And I see Upload file in the Upload allocation table (CSV file) for use in PRODUCTION status section
+Click logging and I see Delete randomization allocation table (production)
 
 log out
