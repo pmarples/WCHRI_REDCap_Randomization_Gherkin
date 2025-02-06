@@ -20,6 +20,7 @@ Click logging and I should see "Download randomization allocation template" (3ti
 
 
 C.3.30.0700.1300: Upload unique allocation table in DEVELOPMENT status (error if duplicated).
+#upload file to Production first
 for Upload allocation table (csv file) for use in PRODUCTION Status
 Choose File AlloRand1
 Click Upload file
