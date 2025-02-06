@@ -40,14 +40,14 @@ Then I should see a dropdown labeled "Choose strata"
 And I should see a button labeled "Add another stratum"
 
 When I select the dropdown option "strat_var1" for the field labeled "Choose strata" 
-And I select the dropdown option "simple_strata_rand" for the field labeled "Choose your randomization field" 
+And I select the dropdown option "simple_rand" for the field labeled "Choose your randomization field" 
 And I click the button "Save randomization model"
 Then I should see "Success! The randomization model has been saved!"
 And I should see a dropdown labeled "Choose strata" with option "strat_var1" selected
 
 ##VERIFY one stratificiation variable is set up
 When I click on the link labeled "Randomization"
-Then I should see a "strat_var1" with the "simple_strat_rand" row of the column labeled "Stratification" of the Randomization Summary table
+Then I should see a "strat_var1" with the "simple_rand" row of the column labeled "Stratification" of the Randomization Summary table
 
 ##VERIFY audit trail
 When I click on “Logging”
@@ -91,7 +91,7 @@ Then I should see a button labeled "Add another stratum"
 When I click the button labeled "Add another stratum"
 Then I should see a dialog containing the following text: "Sorry, but the maximum number of fields that can be used as randomization criteria is 14"
 
-When I select the dropdown option "complex_strata_rand" for the field labeled "Choose your randomization field" 
+When I select the dropdown option "complex_rand" for the field labeled "Choose your randomization field" 
 And I click the button "Save randomization model"
 Then I should see "Success! The randomization model has been saved!"
 And I should see a dropdown labeled "Choose strata" with option "strat_var1" selected
@@ -111,6 +111,6 @@ And I should see a dropdown labeled "Choose strata" with option "strat_var14" se
 
 ##VERIFY stratificiation variables are set up
 When I click on the link labeled "Randomization"
-Then I should see a "strat_var1", "strat_var1", "strat_var3", "strat_var4", "strat_var5", "strat_var6", "strat_var7", "strat_var8", "strat_var9", "strat_var10", "strat_var11", "strat_var12", "strat_var13", "strat_var14" with the "complex_strat_rand" row of the column labeled "Stratification" of the Randomization Summary table
+Then I should see a "strat_var1", "strat_var1", "strat_var3", "strat_var4", "strat_var5", "strat_var6", "strat_var7", "strat_var8", "strat_var9", "strat_var10", "strat_var11", "strat_var12", "strat_var13", "strat_var14" with the "complex_rand" row of the column labeled "Stratification" of the Randomization Summary table
 And I log out
 #END
