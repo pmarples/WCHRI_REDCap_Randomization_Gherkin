@@ -6,7 +6,7 @@ I want to see that Randomization is functioning as expected
 #SETUP project with no randomization enabled - "Project 3.30 norand.xml"
 Scenario:
 Given I login to REDCap with the user "Test_User1"
-And I create a new project named "C.3.30.0300" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "Project 3.30 norand.xml", and clicking the "Create Project" button
+And I create a new project named "C.3.30.0400" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "Project 3.30 randAM.xml", and clicking the "Create Project" button
 
 #SETUP Randomization User Rights (Give User all Rand Rights)
 Scenario:
@@ -22,12 +22,30 @@ And I save changes within the context of User Rights
 And I click on the link labeled "Randomization"
 
 #SETUP Randomization (Setup project with simple Randomization)
+When I click on the icon in the row labeled "rand_group" 
+And I download a file by clicking on the button labeled "Example #1 (basic)"
+And  I upload a "csv" format file located at "RandomizationAllocationTemplate_0400.csv", by clicking the button near "Upload allocation table (CSV file) for use in DEVELOPMENT status" to browse for the file, and clicking the button labeled "Upload File" to upload the file
 
 #FUNCTIONAL_REQUIREMENT C.3.30.0400.0100. User with Randomization Dashboard rights can use Randomization Module Dashboard page.
+Scenario:
+When I click on the link labeled "Randomization"
+And I click on the icon labeled "Dashboard" in the row labeled "rand_group" 
+##VERIFY User with Randomization Dashboard rights can use Randomization Module Dashboard page.
+Then I should see "Randomization Group" in the table
+
+#SETUP User Rights (Takeaway User Rand - Dashboard Rights)
+Scenario: 
+When I click on the link labeled "User Rights"
+And I click on the link labeled "Test User1"
+And I click on the button labeled "Edit User Privileges"
+And I uncheck a checkbox labeled "Dashboard"
+And I save changes within the context of User Rights
 
 #FUNCTIONAL_REQUIREMENT C.3.30.0400.0200: User without Randomization Dashboard rights cannot use Randomization Module Dashboard page.
+Scenario:
+When I click on the link labeled "Randomization"
+#VERIFY User without Randomization Dashboard rights cannot use Randomization Module Dashboard page.
+Then I should NOT see a column labeled "Dashboard" 
 
 And I log out
-
-
 #END
