@@ -16,6 +16,8 @@ Verify file downloads
 Click Example #3 (5x all possible combos)
 Verify file downloads
 #question for ATS/Theresa: is there a way to verify contents of these files are as expected?  
+Click logging and I should see "Download randomization allocation template" (3times)
+
 
 C.3.30.0700.1300: Upload unique allocation table in DEVELOPMENT status (error if duplicated).
 for Upload allocation table (csv file) for use in PRODUCTION Status
@@ -37,12 +39,14 @@ Click Upload file
 File successfuly uploads and I see "Allready uploaded"
 And I see Delete allocation table 
 and I see Download table.
+Click on logging and I should see Upload randomization allocation table - development 
 
 C.3.30.0700.1400: Download allocation table in DEVELOPMENT status.
 for Upload allocation table (CSV file) for use in DEVELOPMENT status
 Click download table
 File RandomizationAllocationTable_Dev downloads
 #Is there a way to check that RandomizationAllocationTable_Dev matches AlloRand2?
+Click on logging and I should see Download randomization allocation table (development)
 
 C.3.30.0700.1500: Delete allocation table in DEVELOPMENT status.
 for Upload allocation table (CSV file) for use in DEVELOPMENT status
@@ -64,6 +68,6 @@ popup "delete allocation table"
 Ok
 then I see  Success! The allocation table has been deleted.
 And I see Upload file in the Upload allocation table (CSV file) for use in DEVELOPMENT status section
-
+Click on logging and I should see Delete randomization allocation table (development)
 
 log out
