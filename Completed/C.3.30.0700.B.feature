@@ -52,7 +52,7 @@ And I select the dropdown option "complex_rand" for the field labeled "Choose yo
 And I click the button "Save randomization model"
 Then I should see "Success! The randomization model has been saved!"
 
-##VERIFY existing_dags in Stratification column beside simple_rand
+##VERIFY existing_dags in Stratification column beside complex_rand
 When I click on the link labeled "Randomization"
 Then I should see an "existing_dags" with the "complex_rand" row of the column labeled "Stratification" of the Randomization Summary table
 And I log out
