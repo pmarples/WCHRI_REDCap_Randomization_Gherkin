@@ -1,5 +1,5 @@
 Feature: C.3.30.0700 User Interface: The system shall ensure users with Randomization Setup can create and modify randomization models while in project development mode. 
-# E: Randomization Allocation tables C.3.30.0700.1200 to C.3.30.0700.1500
+# E: Randomization Allocation tables for use in DEVELOPMENT status C.3.30.0700.1200 to C.3.30.0700.1500
 
 Setup: 
 create project with project 3.30AlloRand.xml
