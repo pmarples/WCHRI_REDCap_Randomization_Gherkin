@@ -1,20 +1,69 @@
 Feature: C.3.30.0700 User Interface: The system shall ensure users with Randomization Setup can create and modify randomization models while in project development mode. 
-# E: Randomization Allocation tables C.3.30.0700.1200 to C.3.30.0700.1800
+# E: Randomization Allocation tables C.3.30.0700.1200 to C.3.30.0700.1500
 
 Setup: 
-create project with project 3.30 Rand
+create project with project 3.30AlloRand.xml
 Add test user to full rights
 Log in with Test user.
 
 C.3.30.0700.1200: Download example allocation tables (Excel/CSV).
 click on Randomization
-beside simple_rand
+beside allo_rand, click Setup
+Click Example 1 (basic) 
+Verify file downloads
+Click Example #2 (all possible combos)
+Verify file downloads
+Click Example #3 (5x all possible combos)
+Verify file downloads
+#question for ATS/Theresa: is there a way to verify contents of these files are as expected?  
 
 C.3.30.0700.1300: Upload unique allocation table in DEVELOPMENT status (error if duplicated).
+for Upload allocation table (csv file) for use in PRODUCTION Status
+Choose File AlloRand1
+Click Upload file
+file successfully Uploads and I see "Allready uploaded"
+
+#Upload the same file to development provides error
+for Upload allocation table (csv file) for use in DEVELOPMENT Status
+Choose File AlloRand1
+Click Upload file
+Message  ERROR: Duplicate allocation table!
+And I see Upload allocation table (csv file) for use in DEVELOPMENT Status still says choose File / upload file
+
+#Upload differnt file to development
+for Upload allocation table (csv file) for use in DEVELOPMENT Status
+Choose File AlloRand2
+Click Upload file
+File successfuly uploads and I see "Allready uploaded"
+And I see Delete allocation table 
+and I see Download table.
+
 C.3.30.0700.1400: Download allocation table in DEVELOPMENT status.
+for Upload allocation table (CSV file) for use in DEVELOPMENT status
+Click download table
+File RandomizationAllocationTable_Dev downloads
+#Is there a way to check that RandomizationAllocationTable_Dev matches AlloRand2?
+
 C.3.30.0700.1500: Delete allocation table in DEVELOPMENT status.
-C.3.30.0700.1600: Upload unique allocation table in PRODUCTION status  (error if duplicated).
-C.3.30.0700.1700: Download allocation table in PRODUCTION status.
-C.3.30.0700.1800: Delete allocation table in PRODUCTION status (admin-only).
+for Upload allocation table (CSV file) for use in DEVELOPMENT status
+Click Delete Allocation table
+popup "delete allocation table"
+Cancel
+for section Upload allocation table (CSV file) for use in DEVELOPMENT status 
+then I see Delete allocation table 
+and I see Download table.
+Click Delete Allocation table
+popup "delete allocation table"
+Cancel
+for section Upload allocation table (CSV file) for use in DEVELOPMENT status 
+then I see Delete allocation table 
+and I see Download table.
+for section Upload allocation table (CSV file) for use in DEVELOPMENT status 
+Click Delete Allocation table
+popup "delete allocation table"
+Ok
+then I see  Success! The allocation table has been deleted.
+And I see Upload file in the Upload allocation table (CSV file) for use in DEVELOPMENT status section
+
 
 log out
