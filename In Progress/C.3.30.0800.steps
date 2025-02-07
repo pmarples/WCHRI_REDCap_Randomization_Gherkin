@@ -19,10 +19,12 @@ Click upload file
 upload allocation table to prod: "AlloRand rand_group2.csv"
 Click Add / Edit Records
 Select Record 1
+Click Randomization button
 Click Randomization group "Randomize"
 dialog: Below you may perform randomization for Record ID "1" on the field Randomization group (rand_group).
 Click Randomize button
 dialog:"Record ID "1" was randomized for the field "Randomization group" and assigned the value "Drug A" (1)."
+Click close
 Click Save & Exit Form
 
 
@@ -60,9 +62,9 @@ select rand rand_survey (Go to:)
 Save randomization model
 Click Ok
 Click choose file
-upload allocation table to dev: "AlloRand auto_rand1.csv"
+upload allocation table to dev: "AlloRand rand_survey1.csv"
 click upload file
-upload allocation table to prod: "AlloRand auto_rand2.csv"
+upload allocation table to prod: "AlloRand rand_survey2.csv"
 select Trigger option: Trigger logic, for all users (including survey respondents)
 select instrument: survey
 Enter Trigger logic: [survey_complete]="2"
@@ -87,24 +89,51 @@ test in survey with Participant
 Click add/Edit Records
 Click add new record
 Click Survey
-verify unable to edit Go to:
-verify Goto says "not yet randomized"
 Enter Yes for Will you complete the survey? radio
 Save & Stay
-Go to not yet randomized and has no data selected
+verify Go to not yet randomized and has no data selected
 Survey options: Log out and Open survey
 Click submit
 Click Close survey
 Log in as test user 1
 Click add/Edit Records
 Click record 8
+Click survey button
 verify go to is already randomized to Survey B
 
 C.3.30.0800.0500 Modify trigger while in production
 Click Project setup
 Click Move project to production
 Click I agree
-Select keep all records
+Select Keep ALL data saved so far.  (8 records)
 Click Yes, Move to Production Status
+Verify warning randomization field's data will be deleted
+click ok
+project is in production
 
+Click Randomization
+Click setup beside rand_survey
+Change trigger to Trigger logic, for users with Randomize permissions only
+change instrument to demographics
+Change Trigger logic to [demographics_complete]='2'
+Save trigger option
+log out.  Log in as Test User 2
+Click Add/Edit Records
+Select Record 7
+#check randomization data deleted when moved to production
+Click on survey and verify go to has no data
+#check User 2 can no longer randomize this record
+Click on Demographics
+Mark complete
+Save and exit form
+Click on survey
+verify not randomized and has no data for Go To field.
+Click on Record ID 7
 
+#check User 1 can randomize this record after changes.
+Log out.  Log in as test user 1
+Click on Demographics
+Verify form complete is complete
+Click Save and Exit Form
+Click Survey
+Verify Goto randomized to Survey D.
