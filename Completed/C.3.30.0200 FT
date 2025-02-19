@@ -1,10 +1,10 @@
 Feature: C.3.30.0200.	User Interface: The system shall allow enabling/disabling Randomization at the project level.	
-#Scenario 1: C.3.30.0200.0100.Enabling adds randomization module to project setup.  
-#Scenario 2: C.3.30.0200.0200. Enabling adds randomization module to application box.  
-#Scenario 3: C.3.30.0200.0300. Enabling adds randomization module options Setup, Dashboard, and Randomize to user rights privilege setup page.  
-#Scenario 4: C.3.30.0200.0400. Disabling removes randomization module from project setup.  
-#Scenario 5: C.3.30.0200.0500. Disabling removes randomization module from application box.  
-#Scenario 6: C.3.30.0200.0600. Disabling removes randomization module options Setup, Dashboard, and Randomize to user rights privilege setup page.
+#Scenario: C.3.30.0200.0100.Enabling adds randomization module to project setup.  
+#Scenario: C.3.30.0200.0200. Enabling adds randomization module to application box.  
+#Scenario: C.3.30.0200.0300. Enabling adds randomization module options Setup, Dashboard, and Randomize to user rights privilege setup page.  
+#Scenario: C.3.30.0200.0400. Disabling removes randomization module from project setup.  
+#Scenario: C.3.30.0200.0500. Disabling removes randomization module from application box.  
+#Scenario: C.3.30.0200.0600. Disabling removes randomization module options Setup, Dashboard, and Randomize to user rights privilege setup page.
 
 As a REDCap end user
 I want to see that Randomization is functioning as expected
