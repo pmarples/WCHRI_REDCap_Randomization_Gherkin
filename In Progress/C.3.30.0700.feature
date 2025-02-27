@@ -7,7 +7,7 @@ I want to see that Randomization is functioning as expected
 #SETUP project with randomization enabled - "C.3.30.Rand.xml"
 Scenario:
 Given I login to REDCap with the user "Test_User1"
-And I create a new project named "C.3.30.0700A" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "C.3.30.Rand.xml", and clicking the "Create Project" button
+And I create a new project named "C.3.30.0700" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "C.3.30.Rand.xml", and clicking the "Create Project" button
 
 #SETUP User Rights
 Scenario: 
