@@ -46,5 +46,14 @@ When I click on the link labeled "Randomization"
 #VERIFY User without Randomization Dashboard rights cannot use Randomization Module Dashboard page.
 Then I should NOT see a column labeled "Dashboard" 
 
+#VERIFY Logging - Save randomization model.
+Scenario:
+When I click on the link labeled "Logging"
+Then I should see a table header and rows containing the following values in the logging table:
+  | Username   | Action        | List of Data Changes OR Fields Exported      |
+  | Test_User1 | Update user Test_User1 | user = 'Test_User1' |
+  | Test_User1 | Manage/Design | Upload randomization allocation table - development |
+  | Test_User1 | Update user Test_User1 | user = 'Test_User1' |
+
 And I log out
 #END
