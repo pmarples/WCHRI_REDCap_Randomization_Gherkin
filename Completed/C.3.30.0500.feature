@@ -54,9 +54,17 @@ And I click on a button labeled "Add new record"
 And I click on the icon labeled "Status" for the row labeled "Randomization" 
 ##VERIFY User without Randomization Randomize rights cannot Randomize.
 Then I NOT should see a button labeled "Randomize"
+
+#VERIFY Logging - Save randomization model.
+Scenario:
+When I click on the link labeled "Logging"
+Then I should see a table header and rows containing the following values in the logging table:
+  | Username   | Action        | List of Data Changes OR Fields Exported      |
+  | Test_User1 | Update user Test_User1 | user = 'Test_User1' |
+  | Test_User1 | Randomize Record 6 | Randomize record|
+  | Test_User1 | Create Record 6 | record_id = '6', rand_group = '1', gender = '0', randomization_complete = '0'|
+  | Test_User1 | Manage/Design | Upload randomization allocation table - development |
+  | Test_User1 | Update user Test_User1 | user = 'Test_User1' |
+
 And I log out
 #END
-
-
-
-
