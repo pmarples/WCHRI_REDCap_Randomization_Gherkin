@@ -35,7 +35,7 @@ Scenario:
 When I click on the link labeled "Add / Edit Records"
 And I select "1" on the dropdown field labeled "Choose an existing Record ID"
 And I select "Assign to Data Access Group" on the dropdown field labeled "Choose action for record"
-And I select "DAG" on the dropdown field labeled "Assign record "1" to one of the following Data Access Groups:"
+And I select "DAG 1" on the dropdown field labeled "Assign record 1" to one of the following Data Access Groups:"
 And I click on the button labeled "Assign to Data Access Group"
 
 #SETUP Upload randomization
@@ -45,7 +45,7 @@ And I click on the icon in the column labeled "Setup" in the row labeled "dag_ra
 And I upload a "csv" format file located at "C.3.30.0600Allocation1.csv", by clicking the button near "Upload allocation table (CSV file) for use in DEVELOPMENT status" to browse for the file, and clicking the button labeled "Upload File" to upload the file
 And I click on the link labeled "My Projects"
 And I logout
-
+**** UP TO HERE****
 #SETUP Login to Test User 2
 Scenario:
 Given I login to REDCap with the user "Test_User2"
