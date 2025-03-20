@@ -35,7 +35,7 @@ Scenario:
 When I click on the link labeled "Add / Edit Records"
 And I select "1" on the dropdown field labeled "Choose an existing Record ID"
 And I select "Assign to Data Access Group" on the dropdown field labeled "Choose action for record"
-And I select "DAG 1" on the dropdown field labeled "Assign record 1" to one of the following Data Access Groups:"
+And I select "DAG 1" on the dropdown field labeled "Assign record "1" to one of the following Data Access Groups:"
 And I click on the button labeled "Assign to Data Access Group"
 
 #SETUP Upload randomization
