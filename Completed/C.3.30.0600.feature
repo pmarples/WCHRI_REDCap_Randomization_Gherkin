@@ -45,7 +45,7 @@ And I click on the icon in the column labeled "Setup" in the row labeled "dag_ra
 And I upload a "csv" format file located at "C.3.30.0600Allocation1.csv", by clicking the button near "Upload allocation table (CSV file) for use in DEVELOPMENT status" to browse for the file, and clicking the button labeled "Upload File" to upload the file
 And I click on the link labeled "My Projects"
 And I logout
-**** UP TO HERE****
+
 #SETUP Login to Test User 2
 Scenario:
 Given I login to REDCap with the user "Test_User2"
@@ -103,11 +103,27 @@ And  I should see the radio field labeled "Stratified by DAG Randomization" with
 And I should see "Already Randomized" near the radio field labeled "Stratified by DAG Randomization"
 And I logout
 
-#Log in as Test User 1 and Randomize two records to DAG 2 (First Group 3 then Group 2 is expected)
+#Log in as Test User 1
 Scenario:
 Given I login to REDCap with the user "Test_User1"
 And I click "My Projects" on the menu bar
 And I click the link labeled "C.3.30.0600"
+
+#VERIFY Logging
+Scenario:
+When I click on the link labeled "Logging"
+Then I should see a table header and rows containing the following values in the logging table:
+  | Username   | Action        | List of Data Changes OR Fields Exported      |
+  | Test_User2 | Randomize Record 1-2 | Randomize record |
+  | Test_User2 | Update record 1-2 | Assign record to Data Access Group (redcap_data_access_group = 'dag_1') |
+  | Test_User2 | Create record 1-2 | record_id = '1-2', dag_rand = '2', randomization_complete = '0' |
+  | Test_User2 | Randomize Record 1-1 | Randomize record |
+  | Test_User2 | Update record 1-1 | Assign record to Data Access Group (redcap_data_access_group = 'dag_2') |
+  | Test_User2 | Create record 1-1 | record_id = '1-1', dag_rand = '1', randomization_complete = '0' |
+  | Test_User1 | Manage/Design | Upload randomization allocation table - development |
+
+#Randomize two records to DAG 2 (First Group 3 then Group 2 is expected)
+Scenario:
 And I click on the link labeled "Add / Edit Records"
 And I click the button "Add new record"
 And I click the bubble for the row labeled "Randomization" on the column labeled "Status"
@@ -132,14 +148,19 @@ And I click on the button labeled "Close"
 Then I should see the radio field labeled "Stratified by DAG Randomization" with the option "Group 2" selected 
 And I should see "Already Randomized" near the radio field labeled "Stratified by DAG Randomization"
 
-#VERIFY Logging - Save randomization model.
+#VERIFY Logging
 Scenario:
 When I click on the link labeled "Logging"
 Then I should see a table header and rows containing the following values in the logging table:
   | Username   | Action        | List of Data Changes OR Fields Exported      |
-  | Test_User1 | Update user Test_User1 | user = 'Test_User1' |
-  | Test_User1 | Manage/Design | Upload randomization allocation table - development |
-  | Test_User1 | Update user Test_User1 | user = 'Test_User1' |
+  | Test_User1 | Update record 7 |  |
+  | Test_User1 | Randomize Record 7 | Randomize record |
+  | Test_User1 | Update record 7 | Assign record to Data Access Group (redcap_data_access_group = 'dag_2') |
+  | Test_User1 | Create record 7 | record_id = '7', dag_rand = '2', randomization_complete = '0' |
+  | Test_User1 | Update record 6 |  |
+  | Test_User1 | Randomize Record 6 | Randomize record |
+  | Test_User1 | Update record 6 | Assign record to Data Access Group (redcap_data_access_group = 'dag_2') |
+  | Test_User1 | Create record 6 | record_id = '6', dag_rand = '3', randomization_complete = '0' |
 
 And I logout
 #END
