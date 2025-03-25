@@ -221,7 +221,7 @@ Then I should see a dialog containing " Success! The randomization model has bee
 And I click on link labeled "Randomization"
 Then I should see a "will_survey" within the "5" row of the column labeled "Target" 
 
-C.3.30.0700.1100: Erase randomization model.
+#C.3.30.0700.1100: Erase randomization model.
 Scenario:
 When I click on the icon labeled "Setup" in the row labeled "11"
 And I click on the link labeled "Erase randomization model" and deny the confirmation window
@@ -243,4 +243,14 @@ Then I should see a table header and rows containing the following values in the
   | Test_User1 | Manage/Design | Save randomization model |
   | Test_User1 | Manage/Design | Save randomization model - blinded |
   | Test_User1 | Manage/Design | Save randomization model |
+
+#C.3.30.0700.1200. Download example allocation tables (Excel/CSV).    
+#C.3.30.0700.1300. User with Randomization Setup uploads a unique allocation table in DEVELOPMENT status (system prevents duplicate uploads).   
+#C.3.30.0700.1400. User with Randomization Setup downloads the allocation table previously uploaded in DEVELOPMENT.  
+#C.3.30.0700.1500. User with Randomization Setup deletes the allocation table previously uploaded in DEVELOPMENT.  
+#C.3.30.0700.1600. User with Randomization Setup uploads a unique allocation table in PRODUCTION status (system prevents duplicate uploads).  
+#C.3.30.0700.1700. User with Randomization Setup downloads the allocation table previously uploaded in PRODUCTION.  
+#C.3.30.0700.1800. Admin deletes the allocation table previously uploaded in PRODUCTION.  
+#C.3.30.0700.1900. Admin uploads an additional allocation table in PRODUCTION status.
+
 
