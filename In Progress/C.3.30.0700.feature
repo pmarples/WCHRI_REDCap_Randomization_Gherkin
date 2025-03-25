@@ -4,7 +4,7 @@ Feature: C.3.30.0700 User Interface: The system shall ensure users with Randomiz
 As a REDCap end user
 I want to see that Randomization is functioning as expected
 
-#SETUP project with randomization enabled - "C.3.30.Rand.xml"
+#SETUP project with randomization enabled - "C.3.30.Rand.REDCap.xml"
 Scenario:
 Given I login to REDCap with the user "Test_User1"
 And I create a new project named "C.3.30.0700" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "C.3.30.Rand.xml", and clicking the "Create Project" button
@@ -46,15 +46,10 @@ And I click the button "Save randomization model"
 Then I should see "Success! The randomization model has been saved!"
 And I should see a dropdown labeled "Choose strata" with option "strat_var1" selected
 
-##VERIFY one stratificiation variable is set up
+#VERIFY one stratificiation variable is set up
 Scenario:
 When I click on the link labeled "Randomization"
 Then I should see a "strat_var1" with the "simple_rand" row of the column labeled "Stratification" of the Randomization Summary table
-
-##VERIFY audit trail
-Scenario:
-When I click on “Logging”
-Then I should see a table row containing the following values in the logging table : “test_user1”, “Manage/Design”, “Save randomization model”
 
 #FUNCTIONAL_REQUIREMENT C.3.30.0700.0300: Enable stratified randomization with up to 14 strata (test all 14).
 Scenario:
@@ -94,7 +89,7 @@ Then I should see a button labeled "Add another stratum"
 When I click the button labeled "Add another stratum"
 Then I should see a dialog containing the following text: "Sorry, but the maximum number of fields that can be used as randomization criteria is 14"
 
-When I select the dropdown option "complex_rand" for the field labeled "Choose your randomization field" 
+When I select the dropdown option "gender" for the field labeled "Choose your randomization field" 
 And I click the button "Save randomization model"
 Then I should see "Success! The randomization model has been saved!"
 And I should see a dropdown labeled "Choose strata" with option "strat_var1" selected
@@ -115,7 +110,7 @@ And I should see a dropdown labeled "Choose strata" with option "strat_var14" se
 ##VERIFY stratificiation variables are set up
 Scenario:
 When I click on the link labeled "Randomization"
-Then I should see a "strat_var1", "strat_var1", "strat_var3", "strat_var4", "strat_var5", "strat_var6", "strat_var7", "strat_var8", "strat_var9", "strat_var10", "strat_var11", "strat_var12", "strat_var13", "strat_var14" with the "complex_rand" row of the column labeled "Stratification" of the Randomization Summary table
+Then I should see a "strat_var1", "strat_var1", "strat_var3", "strat_var4", "strat_var5", "strat_var6", "strat_var7", "strat_var8", "strat_var9", "strat_var10", "strat_var11", "strat_var12", "strat_var13", "strat_var14" with the "gender" row of the column labeled "Stratification" of the Randomization Summary table
 
 #FUNCTIONAL_REQUIREMENT C.3.30.0700.0400: Randomize by group/site enabled with no option selected results in error
 Scenario:
@@ -135,14 +130,14 @@ And I click on the button labeled "Setup randomization"
 And I click on the button labeled "Add new randomization model"
 And I click on the checkbox labeled "B) Randomize by group/site?"
 And I click on the radio button option labeled "Use Data Access Groups to designate each group/site (2 groups currently exist)"
-And I select the dropdown option "simple_rand" for the field labeled "Choose your randomization field" 
+And I select the dropdown option "existing_dags" for the field labeled "Choose your randomization field" 
 And I click the button "Save randomization model"
 Then I should see "Success! The randomization model has been saved!"
 
 ##VERIFY Data Access group in Stratification column beside simple_rand
 Scenario:
 When I click on the link labeled "Randomization"
-Then I should see a "Data Access group" with the "simple_rand" row of the column labeled "Stratification" of the Randomization Summary table
+Then I should see a "Data Access group" with the "existing_dags" row of the column labeled "Stratification" of the Randomization Summary table
 
 #FUNCTIONAL_REQUIREMENT C.3.30.0700.0600: Randomize by group/site enabled with an existing field selected.
 Scenario:
@@ -152,28 +147,39 @@ And I click on the button labeled "Add new randomization model"
 And I click on the checkbox labeled "B) Randomize by group/site?"
 And I click on the radio button option labeled "Use an existing field to designate each group/site"
 And I select the dropdown option "existing_dags" for the field labeled "Use an existing field to designate each group/site"
-And I select the dropdown option "complex_rand" for the field labeled "Choose your randomization field" 
+And I select the dropdown option "strat_var1" for the field labeled "Choose your randomization field" 
 And I click the button "Save randomization model"
 Then I should see "Success! The randomization model has been saved!"
 
 ##VERIFY existing_dags in Stratification column beside complex_rand
 Scenario:
 When I click on the link labeled "Randomization"
-Then I should see an "existing_dags" with the "complex_rand" row of the column labeled "Stratification" of the Randomization Summary table
+Then I should see an "existing_dags" with the "strat_var1" row of the column labeled "Stratification" of the Randomization Summary table
 
 #FUNCTIONAL_REQUIREMENT C.3.30.0700.0700: Choose open randomization dropdown field.
 Scenario:
 When I click on the link labeled "Project Setup"
 And I click on the button labeled "Setup randomization"
 And I click on the button labeled "Add new randomization model"
-And I select the dropdown option "simple_rand" for the field labeled "Choose your randomization field" 
+And I select the dropdown option "strat_var2" for the field labeled "Choose your randomization field" 
 And I click the button "Save randomization model"
 Then I should see "Success! The randomization model has been saved!"
 
 ##VERIFY 
 Scenario:
 When I click on the link labeled "Randomization"
-Then I should see a "simple_rand" row of the column labeled "Target" of the Randomization Summary table
+Then I should see a "strat_var2" row of the column labeled "Target" of the Randomization Summary table
+
+#VERIFY - Logging
+Scenario:
+When I click on the link labeled "Logging"
+Then I should see a table header and rows containing the following values in the logging table:
+  | Username   | Action        | List of Data Changes OR Fields Exported      |
+  | Test_User1 | Manage/Design | Save randomization model |
+  | Test_User1 | Manage/Design | Save randomization model |
+  | Test_User1 | Manage/Design | Save randomization model |
+  | Test_User1 | Manage/Design | Save randomization model |
+  | Test_User1 | Manage/Design | Save randomization model |
 
 #FUNCTIONAL_REQUIREMENT C.3.30.0700.0800: Choose open randomization radio field.
 Scenario:
@@ -215,25 +221,26 @@ Then I should see a dialog containing " Success! The randomization model has bee
 And I click on link labeled "Randomization"
 Then I should see a "will_survey" within the "5" row of the column labeled "Target" 
 
-
 C.3.30.0700.1100: Erase randomization model.
 Scenario:
-When I click on the icon labeled "Setup" in the row labeled "5"
+When I click on the icon labeled "Setup" in the row labeled "11"
 And I click on the link labeled "Erase randomization model" and deny the confirmation window
 Then I should NOT see a dialog containing "Success! Your randomization setup and all allocations have now been erased."
 And I click on the link labeled "Erase randomization model" and accept the confirmation window
 
-#VERIFY Sucess - Radnomization model erased
+#VERIFY Sucess - Randomization model erased
 Scenario:
 Then I should see a dialog containing "Success! Your randomization setup and all allocations have now been erased."
 And I click on link labeled "Randomization"
-Then I should NOT see a "will_survey" within the "5" row of the column labeled "Target" 
+Then I should NOT see a "will_survey" within the "11" row of the column labeled "Target" 
 
-#VERIFY Logging - Save randomization model.
+#VERIFY - Logging
 Scenario:
 When I click on the link labeled "Logging"
 Then I should see a table header and rows containing the following values in the logging table:
   | Username   | Action        | List of Data Changes OR Fields Exported      |
-  | Test_User1 | Manage/Design | Save Randomization Model |
-  | Test_User1 | Manage/Design | Erase randomization model and allocations |
+  | Test_User1 | Manage/Design | Erase Randomization Model and Allocations |
+  | Test_User1 | Manage/Design | Save randomization model |
+  | Test_User1 | Manage/Design | Save randomization model - blinded |
+  | Test_User1 | Manage/Design | Save randomization model |
 
