@@ -8,3 +8,5 @@ I want to see that Randomization is functioning as expected
 Scenario:
 Given I login to REDCap with the user "Test_User1"
 And I create a new project named "C.3.30.1300" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "C.3.30.Rand.xml", and clicking the "Create Project" button
+
+#C.3.30.1300.0100. Export data with randomized values is accurate to allocation table
