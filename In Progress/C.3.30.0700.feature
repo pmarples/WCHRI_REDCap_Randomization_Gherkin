@@ -244,13 +244,92 @@ Then I should see a table header and rows containing the following values in the
   | Test_User1 | Manage/Design | Save randomization model - blinded |
   | Test_User1 | Manage/Design | Save randomization model |
 
-#C.3.30.0700.1200. Download example allocation tables (Excel/CSV).    
-#C.3.30.0700.1300. User with Randomization Setup uploads a unique allocation table in DEVELOPMENT status (system prevents duplicate uploads).   
-#C.3.30.0700.1400. User with Randomization Setup downloads the allocation table previously uploaded in DEVELOPMENT.  
-#C.3.30.0700.1500. User with Randomization Setup deletes the allocation table previously uploaded in DEVELOPMENT.  
+#C.3.30.0700.1200. Download example allocation tables (Excel/CSV).
+Scenario:
+When I click on link labeled "Randomization"
+And I click on the icon labeled "Setup" in the row labeled "5"
+Then I should see a dialog containing "Step 2: Download template allocation tables (as Excel/CSV files)"
+And I click on the button labeled "Example #1 (basic)"
+#VERIFY - Confirm File Downloaded
+Then I should see the downloaded CSV with filename "RandomizationAllocationTemplate.csv"
+And I click on the button labeled "Example #2 (all possible combos)"
+#VERIFY - Confirm File Downloaded
+Then I should see the downloaded CSV with filename "RandomizationAllocationTemplate (1).csv"
+And I click on the button labeled "Example #3 (5x all possible combos)"
+#VERIFY - Confirm File Downloaded
+Then I should see the downloaded CSV with filename "RandomizationAllocationTemplate (2).csv"
+
+#C.3.30.0700.1300. User with Randomization Setup uploads a unique allocation table in DEVELOPMENT status (system prevents duplicate uploads).
+Scenario:
+When I click on link labeled "Randomization"
+And I click on the icon labeled "Setup" in the row labeled "5"
+Then I should see a dialog containing "STEP 3: Upload your allocation table (CSV file)"
+And  I upload a "csv" format file located at "RandomizationAllocationTemplate.csv", by clicking the button near "Upload allocation table (CSV file) for use in DEVELOPMENT status" to browse for the file, and clicking the button labeled "Upload File" to upload the file
+#File Downloaded in step 252 "RandomizationAllocationTemplate.csv"
+
+#VERIFY - Confirm File Upload (ensure no button to duplicate uploads)
+Scenario:
+Then I should see a dialog "Already Uploaded" near "Upload allocation table (CSV file) for use in DEVELOPMENT status"
+And I should Not see a button labeled "Upload File" near "Upload allocation table (CSV file) for use in DEVELOPMENT status"
+
+#C.3.30.0700.1400. User with Randomization Setup downloads the allocation table previously uploaded in DEVELOPMENT.
+Scenario:
+When I click on the button labeled "Download Table" near "Upload allocation table (CSV file) for use in DEVELOPMENT status"
+#VERIFY - Confirm File Downloaded
+Then I should see the downloaded CSV with filename "RandomizationAllocationTemplate_Dev.csv"
+
+#C.3.30.0700.1500. User with Randomization Setup deletes the allocation table previously uploaded in DEVELOPMENT.
+Scenario:
+When I click on the link labeled "Delete allocation table?" near "Upload allocation table (CSV file) for use in DEVELOPMENT status" and deny the confirmation window
+Then I should see a dialog "Already Uploaded" near "Upload allocation table (CSV file) for use in DEVELOPMENT status"
+And I click on the link labeled "Delete allocation table?" near "Upload allocation table (CSV file) for use in DEVELOPMENT status" and confirm the confirmation window
+#VERIFY - Confirm File Deleted
+Then I should see "Success! The allocation table has been deleted." in the dialog box
+And I should see a button labeled "Upload File" near "Upload allocation table (CSV file) for use in DEVELOPMENT status"
+
 #C.3.30.0700.1600. User with Randomization Setup uploads a unique allocation table in PRODUCTION status (system prevents duplicate uploads).  
+Scenario:
+When I click on link labeled "Randomization"
+And I click on the icon labeled "Setup" in the row labeled "5"
+Then I should see a dialog containing "STEP 3: Upload your allocation table (CSV file)"
+And  I upload a "csv" format file located at "RandomizationAllocationTemplate.csv", by clicking the button near "Upload allocation table (CSV file) for use in PRODUCTION status" to browse for the file, and clicking the button labeled "Upload File" to upload the file
+#File Downloaded in step 252 "RandomizationAllocationTemplate.csv"
+
+#VERIFY - Confirm File Upload (ensure no button to duplicate uploads)
+Scenario:
+Then I should see a dialog "Already Uploaded" near "Upload allocation table (CSV file) for use in PRODUCTION status"
+And I should Not see a button labeled "Upload File" near "Upload allocation table (CSV file) for use in PRODUCTION status"
+
 #C.3.30.0700.1700. User with Randomization Setup downloads the allocation table previously uploaded in PRODUCTION.  
+Scenario:
+When I click on the button labeled "Download Table" near "Upload allocation table (CSV file) for use in PRODUCTION status"
+#VERIFY - Confirm File Downloaded
+Then I should see the downloaded CSV with filename "RandomizationAllocationTemplate_Prod.csv"
+
 #C.3.30.0700.1800. Admin deletes the allocation table previously uploaded in PRODUCTION.  
-#C.3.30.0700.1900. Admin uploads an additional allocation table in PRODUCTION status.
+Scenario:
+When I click on the link labeled "Delete allocation table?" near "Upload allocation table (CSV file) for use in PRODUCTION status" and deny the confirmation window
+Then I should see a dialog "Already Uploaded" near "Upload allocation table (CSV file) for use in PRODUCTION status"
+And I click on the link labeled "Delete allocation table?" near "Upload allocation table (CSV file) for use in PRODUCTION status" and confirm the confirmation window
+#VERIFY - Confirm File Deleted
+Then I should see "Success! The allocation table has been deleted." in the dialog box
+And I should see a button labeled "Upload File" near "Upload allocation table (CSV file) for use in PRODUCTION status"
+
+#C.3.30.0700.1900. Admin uploads an additional allocation table in PRODUCTION status. - No Button to upload additional allocation table?
+
+#VERIFY - Logging
+Scenario:
+When I click on the link labeled "Logging"
+Then I should see a table header and rows containing the following values in the logging table:
+  | Username   | Action        | List of Data Changes OR Fields Exported      |
+  | Test_User1 | Manage/Design | Delete randomization allocation table (production) |
+  | Test_User1 | Manage/Design | Download randomization allocation table (production) |
+  | Test_User1 | Manage/Design | Upload randomization allocation table - production |
+  | Test_User1 | Manage/Design | Delete randomization allocation table (development) |
+  | Test_User1 | Manage/Design | Download randomization allocation table (development) |
+  | Test_User1 | Manage/Design | Upload randomization allocation table - development |
+  | Test_User1 | Manage/Design | Download randomization allocation template |
+  | Test_User1 | Manage/Design | Download randomization allocation template |v
+  | Test_User1 | Manage/Design | Download randomization allocation template |
 
 
