@@ -11,5 +11,5 @@ And I create a new project named "C.3.30.1100" by clicking on "New Project" in t
 
 #C.3.30.1100.0100. User without randomize rights cannot randomize record.  
 #C.3.30.1100.0200. User with randomize rights can randomize record.  
-#C.3.30.1100.0300. Record?s randomized value matches allocation table.  
+#C.3.30.1100.0300. Record's randomized value matches allocation table.  
 #C.3.30.1100.0400 User with randomize rights cannot modify randomized record.
