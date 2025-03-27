@@ -8,3 +8,6 @@ I want to see that Randomization is functioning as expected
 Scenario:
 Given I login to REDCap with the user "Test_User1"
 And I create a new project named "C.3.30.1200" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "C.3.30.Rand.xml", and clicking the "Create Project" button
+
+#C.3.30.1200.0100. Logging of record's randomization includes user and timestamp.  
+#C.3.30.1200.0200. Users with logging privileges and without randomization privileges will not see record's randomized values.
