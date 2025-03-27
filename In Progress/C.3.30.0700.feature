@@ -329,7 +329,9 @@ Then I should see a table header and rows containing the following values in the
   | Test_User1 | Manage/Design | Download randomization allocation table (development) |
   | Test_User1 | Manage/Design | Upload randomization allocation table - development |
   | Test_User1 | Manage/Design | Download randomization allocation template |
-  | Test_User1 | Manage/Design | Download randomization allocation template |v
+  | Test_User1 | Manage/Design | Download randomization allocation template |
   | Test_User1 | Manage/Design | Download randomization allocation template |
 
+And I logout
+#END
 
