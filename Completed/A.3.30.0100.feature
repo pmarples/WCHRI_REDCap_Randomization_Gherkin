@@ -1,6 +1,6 @@
-Feature: A.3.30 Control Center: The system shall support enabling or disabling the Randomization module system-wide.
-#Scenario: A.3.30.0100   Control Center: The system shall support enabling or disabling the Randomization module system-wide. Enabled at system level allows randomization module option at the project level.
-#Scenario: A.3.30.0200   Control Center: The system shall support enabling or disabling the Randomization module system-wide. Disabled at system level removes randomization module option at the project level.
+Feature: A.3.30.0100 Control Center: The system shall support enabling or disabling the Randomization module system-wide.
+#Scenario: A.3.30.0100.0100   Enabled at system level allows randomization module option at the project level.
+#Scenario: A.3.30.0100.0200   Disabled at system level removes randomization module option at the project level.
 
 As a REDCap end user
 I want to see that Randomization is functioning as expected
