@@ -1,4 +1,6 @@
 Feature: C.3.30.0600 User Interface: The system shall support stratified randomization by Data Access Group (DAG) and restrict user access based on their DAG assignment.
+#C.3.30.0600.0100. Users within a DAG can randomize records only within their assigned DAG, ensuring they cannot view or randomize records outside their group.    
+#C.3.30.0600.0200. The randomization model shall support stratification by DAG, allowing independent randomization assignments within each DAG.
 
 As a REDCap end user
 I want to see that Randomization is functioning as expected
