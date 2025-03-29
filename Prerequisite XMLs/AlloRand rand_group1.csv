@@ -1,5 +1,5 @@
 redcap_randomization_number,redcap_randomization_group
-,1
+,1,,,
 ,2,,,"NOTES:"
 ,3,,," - Do NOT modify the first row, although you may modify, add, or delete any other row in this file."
 ,,,," - Remember that this file is ONLY a template and should NOT be used as-is as your allocation table."
