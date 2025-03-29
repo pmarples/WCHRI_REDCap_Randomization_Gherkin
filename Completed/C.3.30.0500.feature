@@ -1,4 +1,6 @@
 Feature: C.3.30.0500 User Interface: The system shall allow user rights configuration to create and manage Randomization Dashboard.
+#C.3.30.0500.0100. User with Randomization Randomize rights can Randomize.  
+#C.3.30.0500.0200. User without Randomization Randomize rights cannot Randomize.
 
 As a REDCap end user
 I want to see that Randomization is functioning as expected
