@@ -14,7 +14,8 @@ Given I login to REDCap with the user "Test_User1"
 And I create a new project named "C.3.30.0200" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "Project 3.30 norand.xml", and clicking the "Create Project" button
 
 Scenario: #SETUP User Rights
-When I click on the link labeled "Test User1"
+When I click on the link labeled "User Rights"
+And I click on the link labeled "Test User1"
 And I click on the button labeled "Assign to role" on the tooltip
 And I select "2_FullRand" on the dropdown field labeled "Select Role"
 And I click on the button labeled exactly "Assign"
