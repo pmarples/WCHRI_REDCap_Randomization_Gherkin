@@ -52,6 +52,15 @@ Then I should see a dialog containing the following text: "Record ID 1 was rando
 And I click on the button labeled "Close"
 And I click on the button labeled "Save & Exit Form"
 
+#VERIFY - Logging
+Scenario:
+When I click on the link labeled "Logging"
+Then I should see a table header and rows containing the following values in the logging table:
+  | Username   | Action        | List of Data Changes OR Fields Exported      |
+  | Test_User1 | Update record 1 |  |
+  | Test_User1 | Randomize record 1 | Randomize record |
+  | Test_User1 | Update Response 1 | rand_group = '1' |
+
 #SETUP randomization for 0200
 Scenario:
 When I click on the link labeled "Project Setup"
@@ -84,6 +93,17 @@ When I click on the icon labeled "Status" for the row labeled "Randomization"
 Then I should see a dialog containing the following text: "Already Randomized" near field labeled "Automatic Randomization"
 And  I should see the radio field labeled "Automatic Randomization" with the option "Group 1" selected
 
+#VERIFY - Logging
+Scenario:
+When I click on the link labeled "Logging"
+Then I should see a table header and rows containing the following values in the logging table:
+  | Username   | Action        | List of Data Changes OR Fields Exported      |
+  | Test_User1 | Randomize record 6 | Randomize record (via trigger) |
+  | Test_User1 | Update Response 6 | auto_rand = '1' |
+  | Test_User1 | Create record 6 | fname = 'Donald', lname = 'Duck', demographics_complete = '0', record_id = '6' |
+  | Test_User1 | 	Manage/Design | Save randomization execute option (trigger_option: Trigger logic (user with Randomize permission), instrument: demographics, logic: [fname]<>"" a...) |
+
+
 #SETUP randomization for 0300 and 0400
 Scenario:
 When I click on the link labeled "Project Setup"
@@ -106,7 +126,7 @@ Scenario:
 Given I login to REDCap with the user "Test_User2"
 And I click "My Projects" on the menu bar
 And I click the link labeled "C.3.30.0800"
-When I click on the link labeled "Add/Edit Records"
+And I click on the link labeled "Add/Edit Records"
 And I click on the button labeled "Add new record"
 And I click on the icon labeled "Status" for the row labeled "Survey" 
 Then I should see a dialog containing the following text: "Not yet randomized" near field labeled "Go to:"
@@ -119,6 +139,113 @@ And I select the submit option labeled "Save & Stay" on the Data Collection Inst
 Then I should see a dialog containing the following text: "Already Randomized" near field labeled "Go to:"
 And  I should see the radio field labeled "Go to:" with the option "Survey A" selected
 
+#C.3.30.0800.0400 Trigger logic, for all users based on survey
+Scenario:
+When I click on the link labeled "Add/Edit Records"
+And I click on the button labeled "Add new record"
+And I click on the icon labeled "Status" for the row labeled "Survey" 
+Then I should see a dialog containing the following text: "Not yet randomized" near field labeled "Go to:"
+And I should see a field labeled "Go to:" is disabled
+And I click the button labeled "Yes" for the field labeled "Will you complete the survey?"
+And I select the submit option labeled "Save & Stay" on the Data Collection Instrument
+And I click on the survey option label containing "Log Out + Open Survey" label
+And I click on the button labeled "Submit"
+And I return to the REDCap page I opened the survey from
 
-#C.3.30.0800.0400 Trigger logic, for all users based on survey  
+#VERIFY Trigger Logic, for all users based on survey
+Scenario:
+Given I login to REDCap with the user "Test_User1"
+And I click "My Projects" on the menu bar
+And I click the link labeled "C.3.30.0800"
+And I click on the link labeled "Add/Edit Records"
+And I select "8" on the dropdown field labeled "Choose an existing Record ID"
+And I click on the icon labeled "Status" for the row labeled "Survey" 
+Then I should see a dialog containing the following text: "Already Randomized" near field labeled "Go to:"
+And  I should see the radio field labeled "Go to:" with the option "Survey B" selected
+
+#SETUP move project to production
+Scenario:
+When I click on the link labeled "Project Setup"
+And I click on the button labeled "Move project to production"
+And I click on the radio labeled "Keep ALL data saved so far. (8 Records)" 
+And I click on the button labeled "YES, Move project to production" and accept the confirmation window
+Then I should see a dialog containing the following text: "Success! Project now in production" 
+
+#VERIFY - Logging
+Scenario:
+When I click on the link labeled "Logging"
+Then I should see a table header and rows containing the following values in the logging table:
+  | Username   | Action        | List of Data Changes OR Fields Exported      |
+  | [survey respondent] | Randomize record 8 | Randomize record (via trigger) |
+  | [survey respondent] | Update Response 8 | rand_survey = '2' |
+  | [survey respondent] | Update Response 8 | survey_complete = '2' |
+  | Test_User2 | Create record 8 | will_survey = '1', survey_complete = '0', record_id = '8' |
+  | Test_User2 | Randomize record 8 | Randomize record (via trigger) |
+  | Test_User2 | Update Response 8 | rand_survey = '1' |
+  | Test_User2 | Create record 8 | survey_complete = '2', record_id = '7' |
+  | Test_User1 | 	Manage/Design | Save randomization execute option (trigger_option: Trigger logic (any user or survey participant), instrument: survey, logic: [survey_compl...) |
+
 #C.3.30.0800.0500 Modify trigger while in production
+Scenario:
+When I click on the link labeled "Project Setup"
+And I click on the button labeled "Setup randomization"
+And I click on the icon labeled "Setup" in the row labeled "3"
+And I select the dropdown option "Trigger Logic, for users with Randomize permission only" for the field labeled "Trigger Option"
+And I select the dropdown option "Demographics" for the field labeled "Instrument"
+And I enter "[demographics_complete]="2"" into the textarea field labeled "Trigger logic"
+And I click on the button labeled "Update & Close Editor"
+And I click on the button labeled "Save trigger option"
+And I logout
+
+#VERIFY Modify trigger while in production
+Scenario:
+Given I login to REDCap with the user "Test_User2"
+And I click "My Projects" on the menu bar
+And I click the link labeled "C.3.30.0800"
+And I click on the link labeled "Add/Edit Records"
+And I select "7" on the dropdown field labeled "Choose an existing Record ID"
+And I click on the icon labeled "Status" for the row labeled "Survey" 
+Then I should see the radio labeled "Will you complete the survey?" with option "Yes" unselected
+Then I should see the radio labeled "Go to" with option "Survey A" unselected
+
+#VERIFY Test_User2 can no longer randomize this record
+Scenario:
+When I click on the link labeled "Demographics"
+And I select the dropdown option "Complete" for the Data Collection Instrument field labeled "Complete?" 
+And I select the submit option labeled "Save & Exit Form" on the Data Collection Instrument
+And I click on the icon labeled "Status" for the row labeled "Survey"
+Then I should see a dialog containing the following text: "Not yet randomized" near field labeled "Go to:"
+And I logout
+
+#VERIFY Test_User1 can randomize this record
+Given I login to REDCap with the user "Test_User1"
+And I click "My Projects" on the menu bar
+And I click the link labeled "C.3.30.0800"
+And I click on the link labeled "Add/Edit Records"
+And I select "7" on the dropdown field labeled "Choose an existing Record ID"
+And I click on the icon labeled "Status" for the row labeled "Survey"
+Then I should see a button labeled "Randomize" in the data entry form field "Go to:"
+And I click on the button labeled "Randomize" in the data entry form field "Go to:"
+And I click on the button labeled "Randomize"
+And I click on the button labeled "Close"
+And I should see the radio labeled "Go to" with option "Survey C" selected
+And I select the submit option labeled "Save & Exit Form" on the Data Collection Instrument
+
+#VERIFY - Logging
+Scenario:
+When I click on the link labeled "Logging"
+Then I should see a table header and rows containing the following values in the logging table:
+  | Username   | Action        | List of Data Changes OR Fields Exported      |
+  | Test_User1 | Update record 7 | survey_complete = '2' |
+  | Test_User1 | Randomize record 7 | Randomize record |
+  | Test_User2 | Update record 7 | rand_survey = '3', survey_complete = '0' |
+  | Test_User1 | Update record 7  | demographics_complete = '2' |
+  | Test_User1 | 	Manage/Design | Save randomization execute option (trigger_option: Trigger logic (any user or survey participant), instrument: survey, logic: [demographics...) |
+  | Test_User1 | 	Manage/Design | Move project to Production status |
+  | Test_User1 | Update record 8 | rand_survey = '' |
+  | Test_User1 | Update record 7 | rand_survey = '' |
+  | Test_User1 | Update record 6 | auto_rand = '' |
+  | Test_User1 | Update record 1 | rand_group = '' |
+And I logout
+#END
+  
