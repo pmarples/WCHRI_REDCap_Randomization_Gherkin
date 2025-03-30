@@ -99,9 +99,26 @@ And I select the dropdown option "Survey" for the field labeled "Instrument"
 And I enter "[survey_complete]="2"" into the textarea field labeled "Trigger logic"
 And I click on the button labeled "Update & Close Editor"
 And I click on the button labeled "Save trigger option"
+And I logout
 
 #C.3.30.0800.0300 Trigger logic, for all users based on form  
 Scenario:
+Given I login to REDCap with the user "Test_User2"
+And I click "My Projects" on the menu bar
+And I click the link labeled "C.3.30.0800"
+When I click on the link labeled "Add/Edit Records"
+And I click on the button labeled "Add new record"
+And I click on the icon labeled "Status" for the row labeled "Survey" 
+Then I should see a dialog containing the following text: "Not yet randomized" near field labeled "Go to:"
+And I should see a field labeled "Go to:" is disabled
+And I click the button labeled "Yes" for the field labeled "Will you complete the survey?"
+And I select the dropdown option "Complete" for the Data Collection Instrument field labeled "Complete?" 
+And I select the submit option labeled "Save & Stay" on the Data Collection Instrument
+
+#VERIFY Trigger logic, for all users based on form
+Then I should see a dialog containing the following text: "Already Randomized" near field labeled "Go to:"
+And  I should see the radio field labeled "Go to:" with the option "Survey A" selected
+
 
 #C.3.30.0800.0400 Trigger logic, for all users based on survey  
 #C.3.30.0800.0500 Modify trigger while in production
