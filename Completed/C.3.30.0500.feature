@@ -23,7 +23,7 @@ And I save changes within the context of User Rights
 And I click on the link labeled "Randomization"
 
 #SETUP Randomization (Setup project with simple Randomization)
-When I click on the icon in the row labeled "rand_group" 
+When I click on the icon labeled "Setup" in the row labeled "rand_group" 
 And I download a file by clicking on the button labeled "Example #1 (basic)"
 And  I upload a "csv" format file located at "RandomizationAllocationTemplate.csv", by clicking the button near "Upload allocation table (CSV file) for use in DEVELOPMENT status" to browse for the file, and clicking the button labeled "Upload File" to upload the file
 
