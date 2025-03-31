@@ -5,10 +5,10 @@ Feature: C.3.30.0400 User Interface: The system shall allow user rights configur
 As a REDCap end user
 I want to see that Randomization is functioning as expected
 
-#SETUP project with no randomization enabled - "Project 3.30 randAM.xml"
+#SETUP project with no randomization enabled - "Project 3.30 norand.REDCap"
 Scenario:
 Given I login to REDCap with the user "Test_User1"
-And I create a new project named "C.3.30.0400" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "Project 3.30 randAM.xml", and clicking the "Create Project" button
+And I create a new project named "C.3.30.0400" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "Project 3.30 norand.REDCap", and clicking the "Create Project" button
 
 #SETUP Randomization User Rights (Give User all Rand Rights)
 Scenario:
