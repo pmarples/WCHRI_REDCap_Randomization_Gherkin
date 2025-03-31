@@ -25,7 +25,7 @@ And I click on the link labeled "Randomization"
 
 #SETUP Randomization (Setup project with simple Randomization)
 When I click on the icon labeled "Setup" in the row labeled "1" 
-And  I upload a "csv" format file located at "RandomizationAllocationTemplate_0400.csv", by clicking the button near "Upload allocation table (CSV file) for use in DEVELOPMENT status" to browse for the file, and clicking the button labeled "Upload File" to upload the file
+And I upload a "csv" format file located at "RandomizationAllocationTemplate_0400.csv", by clicking the button near "Upload allocation table (CSV file) for use in DEVELOPMENT status" to browse for the file, and clicking the button labeled "Upload File" to upload the file
 
 #FUNCTIONAL_REQUIREMENT C.3.30.0400.0100. User with Randomization Dashboard rights can use Randomization Module Dashboard page.
 Scenario:
