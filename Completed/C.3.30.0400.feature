@@ -12,9 +12,7 @@ And I create a new project named "C.3.30.0400" by clicking on "New Project" in t
 
 #SETUP Randomization User Rights (Give User all Rand Rights)
 Scenario:
-When I click on the link labeled "Project Setup"
-And I click on "Enable" in the "Randomization module" row in the "Enable optional modules and customizations" section
-And I click on the link labeled "User Rights"
+When I click on the link labeled "User Rights"
 And I click on the link labeled "Test User1"
 And I click on the button labeled "Edit User Privileges"
 And I check a checkbox labeled "Setup"
