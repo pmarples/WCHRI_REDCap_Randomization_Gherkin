@@ -151,6 +151,7 @@ Then I should see a dialog containing the following text: "Record ID "7" was ran
 And I click on the button labeled "Close"
 Then I should see the radio field labeled "Stratified by DAG Randomization" with the option "Group 2" selected 
 And I should see "Already Randomized" near the radio field labeled "Stratified by DAG Randomization"
+And I click the button labeled "Save changes and leave"
 
 #VERIFY Logging
 Scenario:
