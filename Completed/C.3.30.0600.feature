@@ -138,9 +138,9 @@ Then I should see a dialog containing the following text: "Record ID "6" was ran
 And I click on the button labeled "Close"
 Then  I should see the radio field labeled "Stratified by DAG Randomization" with the option "Group 3" selected 
 And I should see "Already Randomized" near the radio field labeled "Stratified by DAG Randomization"
-And I click the button labeled "Save changes & leave"
 
 When I click on the link labeled "Add / Edit Records"
+And I click the button labeled "Save changes & leave"
 And I click the button "Add new record"
 And I click the bubble for the row labeled "Randomization" on the column labeled "Status"
 And  I select "DAG 2" on the dropdown field labeled "Assign record to a Data Access Group?"
