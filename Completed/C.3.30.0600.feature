@@ -65,7 +65,8 @@ Then I should see a dialog containing the following text: "Below you may perform
 And I click on the button labeled "Randomize"
 Then I should see a dialog containing the following text: "Record ID "1-1" was randomized for the field "Randomization group" and assigned the value "Group 1"(1)" 
 And I click on the button labeled "Close"
-And  I should see the radio field labeled "Stratified by DAG Randomization" with the option "Group 1" selected 
+And  I should see the radio field labeled "Stratified by DAG Randomization" with the option "Group 1" selected
+And I click on the button labeled "Close"
 And I should see "Already Randomized" near the radio field labeled "Stratified by DAG Randomization"
 
 #Users in a DAG can view randomization in their DAG
