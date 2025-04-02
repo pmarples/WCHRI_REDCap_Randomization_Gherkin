@@ -127,7 +127,7 @@ Then I should see a table header and rows containing the following values in the
 
 #Randomize two records to DAG 2 (First Group 3 then Group 2 is expected)
 Scenario:
-And I click on the link labeled "Add / Edit Records"
+When I click on the link labeled "Add / Edit Records"
 And I click the button "Add new record"
 And I click the bubble for the row labeled "Randomization" on the column labeled "Status"
 And I select "DAG 2" on the dropdown field labeled "Assign record to a Data Access Group?"
