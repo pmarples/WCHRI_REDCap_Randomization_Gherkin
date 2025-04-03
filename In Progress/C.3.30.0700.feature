@@ -335,7 +335,7 @@ And I click on the link labeled "Delete allocation table?" near "Upload allocati
 Then I should see "Success! The allocation table has been deleted." in the dialog box
 And I should see a button labeled "Upload File" near "Upload allocation table (CSV file) for use in PRODUCTION status"
 
-#C.3.30.0700.1900. Admin uploads an additional allocation table in PRODUCTION status. - No Button to upload additional allocation table?
+#C.3.30.0700.1900. Admin uploads an additional allocation table in PRODUCTION status. - No Button to upload additional allocation table?  Could repeat 1600 again if that's what was meant?
 
 #VERIFY - Logging
 Scenario:
