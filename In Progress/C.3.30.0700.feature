@@ -66,7 +66,7 @@ And I click the button "Save randomization model"
 Then I should see "Success! The randomization model has been saved!"
 And I should see a dropdown labeled "Choose strata" with option "strat_var1" selected
 
-#VERIFY one stratificiation variable is set up
+#VERIFY one stratification variable is set up
 Scenario:
 When I click on the link labeled "Randomization"
 Then I should see a "strat_var1" with the "simple_rand" row of the column labeled "Stratification" of the Randomization Summary table
