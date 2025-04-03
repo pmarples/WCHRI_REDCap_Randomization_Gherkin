@@ -127,7 +127,7 @@ And I should see a dropdown labeled "Choose strata" with option "strat_var12" se
 And I should see a dropdown labeled "Choose strata" with option "strat_var13" selected
 And I should see a dropdown labeled "Choose strata" with option "strat_var14" selected
 
-##VERIFY stratificiation variables are set up
+##VERIFY stratification variables are set up
 Scenario:
 When I click on the link labeled "Randomization"
 Then I should see a "strat_var1", "strat_var1", "strat_var3", "strat_var4", "strat_var5", "strat_var6", "strat_var7", "strat_var8", "strat_var9", "strat_var10", "strat_var11", "strat_var12", "strat_var13", "strat_var14" with the "gender" row of the column labeled "Stratification" of the Randomization Summary table
