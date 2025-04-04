@@ -24,10 +24,10 @@ Feature: C.3.30.0700 User Interface: The system shall ensure users with Randomiz
 As a REDCap end user
 I want to see that Randomization is functioning as expected
 
-#SETUP project with randomization enabled - "C.3.30.Rand.REDCap.xml"
+#SETUP project with randomization enabled - "C.3.30.AllRandNoneSetup.xml"
 Scenario:
 Given I login to REDCap with the user "Test_User1"
-And I create a new project named "C.3.30.0700" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "C.3.30.Rand.xml", and clicking the "Create Project" button
+And I create a new project named "C.3.30.0700" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "C.3.30.AllRandNoneSetup.xml", and clicking the "Create Project" button
 
 #SETUP User Rights
 Scenario: 
@@ -61,7 +61,7 @@ Then I should see a dropdown labeled "Choose strata"
 And I should see a button labeled "Add another stratum"
 
 When I select the dropdown option "strat_var1" for the field labeled "Choose strata" 
-And I select the dropdown option "simple_rand" for the field labeled "Choose your randomization field" 
+And I select the dropdown option "strat_rand1" for the field labeled "Choose your randomization field" 
 And I click the button "Save randomization model"
 Then I should see "Success! The randomization model has been saved!"
 And I should see a dropdown labeled "Choose strata" with option "strat_var1" selected
@@ -69,7 +69,7 @@ And I should see a dropdown labeled "Choose strata" with option "strat_var1" sel
 #VERIFY one stratification variable is set up
 Scenario:
 When I click on the link labeled "Randomization"
-Then I should see a "strat_var1" with the "simple_rand" row of the column labeled "Stratification" of the Randomization Summary table
+Then I should see a "strat_var1" with the "strat_rand1" row of the column labeled "Stratification" of the Randomization Summary table
 
 #FUNCTIONAL_REQUIREMENT C.3.30.0700.0300: Enable stratified randomization with up to 14 strata (test all 14).
 Scenario:
@@ -109,7 +109,7 @@ Then I should see a button labeled "Add another stratum"
 When I click the button labeled "Add another stratum"
 Then I should see a dialog containing the following text: "Sorry, but the maximum number of fields that can be used as randomization criteria is 14"
 
-When I select the dropdown option "gender" for the field labeled "Choose your randomization field" 
+When I select the dropdown option "strat_rand2" for the field labeled "Choose your randomization field" 
 And I click the button "Save randomization model"
 Then I should see "Success! The randomization model has been saved!"
 And I should see a dropdown labeled "Choose strata" with option "strat_var1" selected
@@ -130,7 +130,7 @@ And I should see a dropdown labeled "Choose strata" with option "strat_var14" se
 ##VERIFY stratification variables are set up
 Scenario:
 When I click on the link labeled "Randomization"
-Then I should see a "strat_var1", "strat_var1", "strat_var3", "strat_var4", "strat_var5", "strat_var6", "strat_var7", "strat_var8", "strat_var9", "strat_var10", "strat_var11", "strat_var12", "strat_var13", "strat_var14" with the "gender" row of the column labeled "Stratification" of the Randomization Summary table
+Then I should see a "strat_var1", "strat_var1", "strat_var3", "strat_var4", "strat_var5", "strat_var6", "strat_var7", "strat_var8", "strat_var9", "strat_var10", "strat_var11", "strat_var12", "strat_var13", "strat_var14" with the "strat_rand2" row of the column labeled "Stratification" of the Randomization Summary table
 
 #FUNCTIONAL_REQUIREMENT C.3.30.0700.0400: Randomize by group/site enabled with no option selected results in error
 Scenario:
@@ -138,7 +138,12 @@ When I click on the link labeled "Project Setup"
 And I click on the button labeled "Setup randomization"
 And I click on the button labeled "Add new randomization model"
 And I click on the checkbox labeled "B) Randomize by group/site?"
-And I select the dropdown option "simple_rand" for the field labeled "Choose your randomization field" 
+#Then I should see Radio button with options: 
+#-Use Data Access Groups to designate each group/site
+#-Use an exiting field to designate each group/site
+#-select a field drop down.
+
+When I select the dropdown option "dag_rand" for the field labeled "Choose your randomization field" 
 And I click the button "Save randomization model"
 Then I should see a dialog containing the following text: "Please choose one of the grouping options OR uncheck the Randomize By Group checkbox."
 And I click "Ok"
@@ -150,14 +155,14 @@ And I click on the button labeled "Setup randomization"
 And I click on the button labeled "Add new randomization model"
 And I click on the checkbox labeled "B) Randomize by group/site?"
 And I click on the radio button option labeled "Use Data Access Groups to designate each group/site (2 groups currently exist)"
-And I select the dropdown option "existing_dags" for the field labeled "Choose your randomization field" 
+And I select the dropdown option "dag_rand" for the field labeled "Choose your randomization field" 
 And I click the button "Save randomization model"
 Then I should see "Success! The randomization model has been saved!"
 
-##VERIFY Data Access group in Stratification column beside simple_rand
+##VERIFY Data Access group in Stratification column beside dag_rand
 Scenario:
 When I click on the link labeled "Randomization"
-Then I should see a "Data Access group" with the "existing_dags" row of the column labeled "Stratification" of the Randomization Summary table
+Then I should see a "Data Access group" with the "dag_rand" row of the column labeled "Stratification" of the Randomization Summary table
 
 #FUNCTIONAL_REQUIREMENT C.3.30.0700.0600: Randomize by group/site enabled with an existing field selected.
 Scenario:
@@ -167,28 +172,28 @@ And I click on the button labeled "Add new randomization model"
 And I click on the checkbox labeled "B) Randomize by group/site?"
 And I click on the radio button option labeled "Use an existing field to designate each group/site"
 And I select the dropdown option "existing_dags" for the field labeled "Use an existing field to designate each group/site"
-And I select the dropdown option "strat_var1" for the field labeled "Choose your randomization field" 
+And I select the dropdown option "dagfield_rand" for the field labeled "Choose your randomization field" 
 And I click the button "Save randomization model"
 Then I should see "Success! The randomization model has been saved!"
 
-##VERIFY existing_dags in Stratification column beside complex_rand
+##VERIFY existing_dags in Stratification column beside dagfield_rand
 Scenario:
 When I click on the link labeled "Randomization"
-Then I should see an "existing_dags" with the "strat_var1" row of the column labeled "Stratification" of the Randomization Summary table
+Then I should see an "existing_dags" with the "dagfield_rand" row of the column labeled "Stratification" of the Randomization Summary table
 
 #FUNCTIONAL_REQUIREMENT C.3.30.0700.0700: Choose open randomization dropdown field.
 Scenario:
 When I click on the link labeled "Project Setup"
 And I click on the button labeled "Setup randomization"
 And I click on the button labeled "Add new randomization model"
-And I select the dropdown option "strat_var2" for the field labeled "Choose your randomization field" 
+And I select the dropdown option "drop_rand" for the field labeled "Choose your randomization field" 
 And I click the button "Save randomization model"
 Then I should see "Success! The randomization model has been saved!"
 
 ##VERIFY 
 Scenario:
 When I click on the link labeled "Randomization"
-Then I should see a "strat_var2" row of the column labeled "Target" of the Randomization Summary table
+Then I should see a "drop_rand" row of the column labeled "Target" of the Randomization Summary table
 
 #VERIFY - Logging
 Scenario:
@@ -206,14 +211,14 @@ Scenario:
 When I click on the link labeled "Project Setup"
 And I click on the button labeled "Setup randomization"
 And I click on the button labeled "Add new randomization model"
-And I select the dropdown option "complex_rand" for the field labeled "Choose your randomization field" 
+And I select the dropdown option "radio_rand" for the field labeled "Choose your randomization field" 
 And I click the button "Save randomization model"
 Then I should see "Success! The randomization model has been saved!"
 
 ##VERIFY 
 Scenario:
 When I click on the link labeled "Randomization"
-Then I should see a "complex_rand" row of the column labeled "Target" of the Randomization Summary table
+Then I should see a "radio_rand" row of the column labeled "Target" of the Randomization Summary table
 
 #FUNCTIONAL_REQUIREMENT C.3.30.0700.0900: Choose concealed randomization text field.
 Scenario:
@@ -232,18 +237,19 @@ Then I should see a "concealed_rand" row of the column labeled "Target" of the R
 #FUNCTIONAL_REQUIREMENT C.3.30.0700.1000: Save randomization model.
 Scenario:
 When I click on the button labeled "Add new randomization model"
-And I select "will_survey" on the dropdown field labeled "-select a field-"
+And I select "rand" on the dropdown field labeled "-select a field-"
 And I click a button labeled "Save randomization model" and accept the confirmation window
+And I should see a "Concealed allocation" icon in the column labeled "Allocation type" of the "concealed_rand" row of the column labeled "Target" of the Randomization Summary table
 
 #VERIFY Success - Save randomization model.
 Scenario:
 Then I should see a dialog containing " Success! The randomization model has been saved!"
 And I click on link labeled "Randomization"
-Then I should see a "will_survey" within the "5" row of the column labeled "Target" 
+Then I should see a "rand" within the "8" row of the column labeled "Target" 
 
 #C.3.30.0700.1100: Erase randomization model.
 Scenario:
-When I click on the icon labeled "Setup" in the row labeled "11"
+When I click on the icon labeled "Setup" in the row labeled "8"
 And I click on the link labeled "Erase randomization model" and deny the confirmation window
 Then I should NOT see a dialog containing "Success! Your randomization setup and all allocations have now been erased."
 And I click on the link labeled "Erase randomization model" and accept the confirmation window
@@ -252,7 +258,7 @@ And I click on the link labeled "Erase randomization model" and accept the confi
 Scenario:
 Then I should see a dialog containing "Success! Your randomization setup and all allocations have now been erased."
 And I click on link labeled "Randomization"
-Then I should NOT see a "will_survey" within the "11" row of the column labeled "Target" 
+Then I should NOT see a "rand" within the "8" row of the column labeled "Target" 
 
 #VERIFY - Logging
 Scenario:
@@ -267,7 +273,7 @@ Then I should see a table header and rows containing the following values in the
 #C.3.30.0700.1200. Download example allocation tables (Excel/CSV).
 Scenario:
 When I click on link labeled "Randomization"
-And I click on the icon labeled "Setup" in the row labeled "5"
+And I click on the icon labeled "Setup" in the row labeled "5" #drop_rand
 Then I should see a dialog containing "Step 2: Download template allocation tables (as Excel/CSV files)"
 And I click on the button labeled "Example #1 (basic)"
 #VERIFY - Confirm File Downloaded
@@ -282,10 +288,10 @@ Then I should see the downloaded CSV with filename "RandomizationAllocationTempl
 #C.3.30.0700.1300. User with Randomization Setup uploads a unique allocation table in DEVELOPMENT status (system prevents duplicate uploads).
 Scenario:
 When I click on link labeled "Randomization"
-And I click on the icon labeled "Setup" in the row labeled "5"
+And I click on the icon labeled "Setup" in the row labeled "5" #drop_rand
 Then I should see a dialog containing "STEP 3: Upload your allocation table (CSV file)"
 And  I upload a "csv" format file located at "RandomizationAllocationTemplate.csv", by clicking the button near "Upload allocation table (CSV file) for use in DEVELOPMENT status" to browse for the file, and clicking the button labeled "Upload File" to upload the file
-#File Downloaded in step 252 "RandomizationAllocationTemplate.csv"
+#File Downloaded for Example #1 "RandomizationAllocationTemplate.csv"
 
 #VERIFY - Confirm File Upload (ensure no button to duplicate uploads)
 Scenario:
@@ -310,9 +316,9 @@ And I should see a button labeled "Upload File" near "Upload allocation table (C
 #C.3.30.0700.1600. User with Randomization Setup uploads a unique allocation table in PRODUCTION status (system prevents duplicate uploads).  
 Scenario:
 When I click on link labeled "Randomization"
-And I click on the icon labeled "Setup" in the row labeled "5"
+And I click on the icon labeled "Setup" in the row labeled "5" #drop_rand
 Then I should see a dialog containing "STEP 3: Upload your allocation table (CSV file)"
-And  I upload a "csv" format file located at "RandomizationAllocationTemplate.csv", by clicking the button near "Upload allocation table (CSV file) for use in PRODUCTION status" to browse for the file, and clicking the button labeled "Upload File" to upload the file
+And I upload a "csv" format file located at "RandomizationAllocationTemplate.csv", by clicking the button near "Upload allocation table (CSV file) for use in PRODUCTION status" to browse for the file, and clicking the button labeled "Upload File" to upload the file
 #File Downloaded in step 252 "RandomizationAllocationTemplate.csv"
 
 #VERIFY - Confirm File Upload (ensure no button to duplicate uploads)
