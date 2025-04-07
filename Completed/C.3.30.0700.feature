@@ -290,7 +290,7 @@ Scenario:
 When I click on link labeled "Randomization"
 And I click on the icon labeled "Setup" in the row labeled "5" #drop_rand
 Then I should see a dialog containing "STEP 3: Upload your allocation table (CSV file)"
-And  I upload a "csv" format file located at "RandomizationAllocationTemplate.csv", by clicking the button near "Upload allocation table (CSV file) for use in DEVELOPMENT status" to browse for the file, and clicking the button labeled "Upload File" to upload the file
+And I upload a "csv" format file located at "RandomizationAllocationTemplate.csv", by clicking the button near "Upload allocation table (CSV file) for use in DEVELOPMENT status" to browse for the file, and clicking the button labeled "Upload File" to upload the file
 #File Downloaded for Example #1 "RandomizationAllocationTemplate.csv"
 
 #VERIFY - Confirm File Upload (ensure no button to duplicate uploads)
