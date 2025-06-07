@@ -41,14 +41,28 @@ Given I logout
 
 Scenario: C.3.30.0900.0100. Normal user cannot modify setup in production. 
 Given I login to REDCap with the user "Test_User1"
-# Click on Randomization
-# click on Setup in row 1
+And I Click on the link labeled "Randomization"
+And I click on the icon labeled "Setup" in the row labeled "1"
+
 #verify unable to erase randomization model
+And I verify I cannot click on the link labeled "Erase randomization model"
+
 #Verify unable to modify Stratification
+And I verify I cannot uncheck the checkbox labeled "A) Use stratified randomization?"
+And I verify I cannot select "strat_1 (Stratification 1)" on the first dropdown field labeled "gender"
+
 #Verify unable to change randomize by group/site
+And I verify I cannot check the checkbox labeled "B) Randomize by group/site?"
+
 #verify unable to change randomization field
+And I verify I cannot select "rand_group (Randomization group)" on the second dropdown field labeled "rand_group (Randomization group)"
+
 #verify unable to upload or download allocation table for use in Development
+And I verify I cannot click on the button labeled "Download table" on the first button labeled "Download table"
+
 #verify unable to upload or download allocation table for use in Production
+And I verify I cannot click on the button labeled "Download table" on the second button labeled "Download table"
+
 Given I logout
 
 Scenario: C.3.30.0900.0200. Admin user unable to revert project to development.  
