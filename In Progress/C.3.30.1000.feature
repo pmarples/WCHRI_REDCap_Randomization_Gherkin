@@ -19,7 +19,6 @@ Then I should see (#rejection is expected, but have been unable to determine wha
 And I upload a "csv" format file located at "AlloRand rand_group nonseq.csv", by clicking the button near "Upload allocation table (CSV file) for use in PRODUCTION status" to browse for the file, and clicking the button labeled "Upload File" to upload the file
 Then I should see (#rejection)
 
-
 C.3.30.1000.200: The system shall assign the next available allocation entry sequentially to each new record.
 Scenario:
 When I click on the link labeled "Project Setup"
@@ -49,7 +48,6 @@ And I click on the button labeled "Randomize"
 Then I should see a dialog containing the following text: "Record ID "7" was randomized for the field "Randomization group" and assigned the value "Drug B" (2)." 
 And I click on the button labeled "Close"
 And I click on the button labeled "Save & Exit Form"
-___
 
 #Verify records randomized from different genders (stratification groups) are assigned to the expected allocation (next sequential allocation for their strat group) - the first man should be Placebo and the First Woman should be Placebo
 When I click on the link labeled "Project Setup"
