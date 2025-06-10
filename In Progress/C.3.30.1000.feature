@@ -10,6 +10,15 @@ I want to see that Randomization is functioning as expected
 Scenario:
 Given I login to REDCap with the user "Test_User1"
 And I create a new project named "C.3.30.1000" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "C.3.30.OneRand.xml", and clicking the "Create Project" button
+#SETUP User Rights
+
+Scenario: 
+When I click on the link labeled "User Rights"
+And I click on the link labeled "Test_User1" 
+And I click on the button labeled "Assign to role"
+And I select "1_FullRights" on the dropdown field labeled "select role"
+And I click on the button labeled exactly "Assign"
+Then I should see "User "Test_User1" has been successfully ASSIGNED to the user role "1_FullRights"."
 
 C.3.30.1000.100: The system shall prevent uploading an allocation table that lacks sequential assignment.  
 Scenario:
