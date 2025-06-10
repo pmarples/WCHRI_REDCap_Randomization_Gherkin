@@ -97,7 +97,7 @@ And I should NOT see a "Group A" within the "6" row of the column labeled "Blind
 #C.3.30.1500.0400. Only users with setup rights or admin privileges can access and export the full allocation table directly from the setup interface, regardless of model type.
 Scenario:#User without setup rights can not access and export the full allocation table directly from the setup interface, regardless of Randomization type.
 Given I click on the link labeled "Randomization"
-And I should not see "Setup" in the Randomization table
+Then I should not see "Setup" in the Randomization table
 Given I logout
 
 Scenario:#User with setup rights can access and export the full allocation table directly from the setup interface, (rand_group) open randomization type
