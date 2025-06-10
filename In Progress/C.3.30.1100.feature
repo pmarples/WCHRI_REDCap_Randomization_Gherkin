@@ -41,11 +41,21 @@ Given I logout
 
 #C.3.30.1100.0100. User without randomize rights cannot randomize record.  
 Given I login to REDCap with the user "Test_User2"
-And I click on the link labeled "Add / Edit Records"
+And I click on the link labeled "Add/Edit Records"
 And I click on the button labeled "Add new record"
-
+And I click on the icon labeled "Status" for the row labeled "Randomization" 
+Then I should NOT see a button labeled "Randomize"
+And I CANNOT select the radio option "Drug A" for the field labeled "Randomization group"
+Given I logout
 
 #C.3.30.1100.0200. User with randomize rights can randomize record.  
+Given I login to REDCap with the user "Test_User1"
+And I click on the link labeled "Add/Edit Records"
+And I click on the button labeled "Add new record"
+And I click on the icon labeled "Status" for the row labeled "Randomization" 
+Then I should see a button labeled "Randomize"
+And I click ont the button labeled "Randomize"
+
 #C.3.30.1100.0300. Record's randomized value matches allocation table.  (Also tested in C.3.30.1000 as part of proving sequential assignment)
 #C.3.30.1100.0400 User with randomize rights cannot modify randomized record.
 
