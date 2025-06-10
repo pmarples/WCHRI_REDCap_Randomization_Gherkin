@@ -71,6 +71,8 @@ And I should not see "Group A" in the data entry form field "Blinded randomizati
 #Verify the user can only see a concealed allocation code in reports with no visible group assignment.  
 When I click on the link "OpenBlind"
 Then I should see a table 
+   |Time / Date| Username   | Action        | List of Data Changes OR Fields Exported      |
+   | MM-DD-YYYY HH:MM | Test_User1 | Randomize record 6 | Randomize record |
 
 #C.3.30.1500.0200. For an open model, users without setup rights can view the assigned group allocation directly in the record and reports.  
 #C.3.30.1500.0300. All users with export rights can export randomized records, seeing the allocation assigned to each record as displayed in the record view.  
