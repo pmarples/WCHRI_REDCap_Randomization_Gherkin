@@ -55,6 +55,11 @@ And I click on the button labeled "Add new record"
 And I click on the icon labeled "Status" for the row labeled "Randomization" 
 Then I should see a button labeled "Randomize"
 And I click ont the button labeled "Randomize"
+And I select "Man" on the radio field labeled "Do you describe yourself as a man, a woman, or in some other way?"
+And I click on the button labeled "Randomize"
+Then I should see a dialog containing the following text: "Record ID "6" was randomized for the field "Randomization group" and assigned the value "Drug A" (1)." 
+And I click on the button labeled "Close"
+And I click on the button labeled "Save & Exit Form"
 
 #C.3.30.1100.0300. Record's randomized value matches allocation table.  (Also tested in C.3.30.1000 as part of proving sequential assignment)
 #C.3.30.1100.0400 User with randomize rights cannot modify randomized record.
