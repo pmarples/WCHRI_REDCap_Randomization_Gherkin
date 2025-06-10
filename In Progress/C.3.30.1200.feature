@@ -54,6 +54,7 @@ Given I Logout
 
 #C.3.30.1200.0200. Users with logging privileges and without randomization privileges will not see record's randomized values.
 Given I login to REDCap with the user "Test_User2"
+And I click on the link labeled "Logging"
 # note - In logging, I should not see record 6's randomized values, but I seem to be able to (in the Create Record row just after the Randomize Record row)
 
 Given I logout
