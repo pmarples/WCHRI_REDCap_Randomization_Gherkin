@@ -69,13 +69,32 @@ Then I should see "1" in the data entry form field "Blinded randomization"
 And I should not see "Group A" in the data entry form field "Blinded randomization" 
 
 #Verify the user can only see a concealed allocation code in reports with no visible group assignment.  
-When I click on the link "OpenBlind"
+When I click on the link "Blind Rand Report"
 Then I should see a table header and rows containing the following values in the table:
-   | Record ID | Randomization group  | Blinded randomization |
-   |6          | Drug A (1)           | 1                     |
+   | Record ID | Blinded randomization |
+   |6          | 1                     |
+
+And I should NOT see a table header and rows containing the following values in the table:
+   | Record ID | Blinded randomization |
+   |6          | Group A               |
 
 #C.3.30.1500.0200. For an open model, users without setup rights can view the assigned group allocation directly in the record and reports.  
+Given I click on the link labeled "Add / Edit Records"
+And I select "6" on the dropdown field labeled "Choose an existing Record ID"
+And I click the bubble for the row labeled "Randomization" on the column labeled "Status"
+
+#Verify the user can see the assigned group allocation code directly in the record
+Then I should see the radio labeled "Radomization group" with option "Drug A" selected
+
+#Verify the user can see the assigned group allocation code directly in reports
+When I click on the link "Open Rand Report"
+Then I should see a table header and rows containing the following values in the table:
+   | Record ID | Randomization group |
+   |6          | Drug A (1)          |
+
 #C.3.30.1500.0300. All users with export rights can export randomized records, seeing the allocation assigned to each record as displayed in the record view.  
+
+
 #C.3.30.1500.0400. Only users with setup rights or admin privileges can access and export the full allocation table directly from the setup interface, regardless of model type.
 
 
