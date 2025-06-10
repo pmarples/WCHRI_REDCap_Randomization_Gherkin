@@ -1,5 +1,7 @@
 Feature: C.3.30.1000.	User Interface: The system shall support the sequential assignment of allocation table entries to participants based on stratification.
-# Randomization C.3.30.1000.0100 to C.3.30.1000.0200
+# Randomization 
+# C.3.30.1000.100: The system shall prevent uploading an allocation table that lacks sequential assignment.  
+# C.3.30.1000.200: The system shall assign the next available allocation entry sequentially to each new record.
 
 As a REDCap end user
 I want to see that Randomization is functioning as expected
