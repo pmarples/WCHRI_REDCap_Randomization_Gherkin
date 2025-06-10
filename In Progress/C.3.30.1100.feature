@@ -29,14 +29,8 @@ And I click on the button labeled "Setup randomization"
 And I click on the icon labeled "Setup" in the row labeled "1"
 And I upload a "csv" format file located at "AlloRand rand_group3.csv", by clicking the button near "Upload allocation table (CSV file) for use in DEVELOPMENT status" to browse for the file, and clicking the button labeled "Upload File" to upload the file
 And I upload a "csv" format file located at "AlloRand rand_group4.csv", by clicking the button near "Upload allocation table (CSV file) for use in PRODUCTION status" to browse for the file, and clicking the button labeled "Upload File" to upload the file
-When I click on the link labeled "Project Setup"
-And I click on the button labeled "Move project to production"
-And I click on the radio labeled "Keep ALL data saved so far" in the dialog box
-And I click on the button labeled "YES, Move to Production Status" in the dialog box to request a change in project status
-And I click on the button labeled "Ok"
-Then I should see Project status: "Production"
 
-#SETUP User Rights
+#SETUP User Rights for user without randomization rights.
 Scenario: 
 When I click on the link labeled "User Rights"
 And I enter "Test_User1" into the input field labeled "Assign to role"
@@ -45,8 +39,17 @@ And I click on the button labeled exactly "Assign"
 Then I should see "User "Test_User1" has been successfully ASSIGNED to the user role "1_FullRights"."
 Given I logout
 
-
 #C.3.30.1100.0100. User without randomize rights cannot randomize record.  
+Given I login to REDCap with the user "Test_User1"
+
 #C.3.30.1100.0200. User with randomize rights can randomize record.  
 #C.3.30.1100.0300. Record's randomized value matches allocation table.  (Also tested in C.3.30.1000 as part of proving sequential assignment)
 #C.3.30.1100.0400 User with randomize rights cannot modify randomized record.
+
+#save in case need to move to production
+When I click on the link labeled "Project Setup"
+And I click on the button labeled "Move project to production"
+And I click on the radio labeled "Keep ALL data saved so far" in the dialog box
+And I click on the button labeled "YES, Move to Production Status" in the dialog box to request a change in project status
+And I click on the button labeled "Ok"
+Then I should see Project status: "Production"
