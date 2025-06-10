@@ -62,6 +62,8 @@ And I click on the button labeled "Close"
 And I click on the button labeled "Save & Exit Form"
 
 #C.3.30.1100.0300. Record's randomized value matches allocation table.  (Also tested in C.3.30.1000 as part of proving sequential assignment)
+#question: Is it enough to be able to predict what allocation is coming next?  Or do we need to "look" at the allocation table to verify it is the same as what is expected?
+
 #C.3.30.1100.0400 User with randomize rights cannot modify randomized record.
 
 #save in case need to move to production
