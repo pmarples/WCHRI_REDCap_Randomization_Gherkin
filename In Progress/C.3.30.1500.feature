@@ -52,14 +52,18 @@ Then I should see a dialog containing the following text: "Record ID "6" was ran
 And I click on the button labeled "Close"
 And I click on a button labeled "Randomize" for the field labeled "Blinded randomization"
 And I click on the button labeled "Randomize"
-Then I should see a dialog containing the following text: "Record ID "6" was randomized for the field "Blinded randomization" and assigned the value "01"." 
+Then I should see a dialog containing the following text: "Record ID "6" was randomized for the field "Blinded randomization" and assigned the value "1"." 
 And I click on the button labeled "Close"
 And I click on the button labeled "Save & Exit Form"
 Given I Logout
 
 #C.3.30.1500.0100. For a blinded model, users without setup rights will see only a concealed allocation code in the record and reports, with no visible group assignment.  
+Scenario:
 Given I login to REDCap with the user "Test_User2"
-
+And I click on the link labeled "Add / Edit Records"
+And I select "6" on the dropdown field labeled "Choose an existing Record ID"
+And I click the bubble for the row labeled "Randomization" on the column labeled "Status"
+Then 
 
 
 #C.3.30.1500.0200. For an open model, users without setup rights can view the assigned group allocation directly in the record and reports.  
