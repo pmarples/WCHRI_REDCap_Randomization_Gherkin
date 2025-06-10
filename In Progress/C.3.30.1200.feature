@@ -11,3 +11,11 @@ And I create a new project named "C.3.30.1200" by clicking on "New Project" in t
 
 #C.3.30.1200.0100. Logging of record's randomization includes user and timestamp.  
 #C.3.30.1200.0200. Users with logging privileges and without randomization privileges will not see record's randomized values.
+
+
+
+
+
+Then I should see a table header and rows containing the following values in the logging table:
+  | Username   | Action        | List of Data Changes OR Fields Exported      |
+  | Test_User1 | Update record 7 | survey_complete = '2' |
