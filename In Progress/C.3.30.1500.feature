@@ -43,8 +43,25 @@ And I upload a "csv" format file located at "AlloRand open1.csv", by clicking th
 
 #SETUP -  Create a record and randomize with both Open and Blinded Randomization fields.
 Scenario:
+Given I click on the link labeled "Add/Edit Records"
+And I click on the button labeled "Add new record"
+And I click on the icon labeled "Status" for the row labeled "Randomization" 
+And I click on a button labeled "Randomize" for the field labeled "Randomization Group"
+And I click on the button labeled "Randomize"
+Then I should see a dialog containing the following text: "Record ID "6" was randomized for the field "Randomization group" and assigned the value "Drug A" (1)." 
+And I click on the button labeled "Close"
+And I click on a button labeled "Randomize" for the field labeled "Blinded randomization"
+And I click on the button labeled "Randomize"
+Then I should see a dialog containing the following text: "Record ID "6" was randomized for the field "Blinded randomization" and assigned the value "01"." 
+And I click on the button labeled "Close"
+And I click on the button labeled "Save & Exit Form"
+Given I Logout
 
 #C.3.30.1500.0100. For a blinded model, users without setup rights will see only a concealed allocation code in the record and reports, with no visible group assignment.  
+Given I login to REDCap with the user "Test_User2"
+
+
+
 #C.3.30.1500.0200. For an open model, users without setup rights can view the assigned group allocation directly in the record and reports.  
 #C.3.30.1500.0300. All users with export rights can export randomized records, seeing the allocation assigned to each record as displayed in the record view.  
 #C.3.30.1500.0400. Only users with setup rights or admin privileges can access and export the full allocation table directly from the setup interface, regardless of model type.
