@@ -25,7 +25,7 @@ Then I should see "User "Test_User1" has been successfully ASSIGNED to the user 
 #SETUP randomization 
 Scenario:
 When I click on the link labeled "Project Setup"
-And I click on the button labeled "Setup randomization"
+And I click on the button labeled "Set up randomization"
 And I click on the icon labeled "Setup" in the row labeled "1"
 And I upload a "csv" format file located at "AlloRand rand_group3.csv", by clicking the button near "Upload allocation table (CSV file) for use in DEVELOPMENT status" to browse for the file, and clicking the button labeled "Upload File" to upload the file
 And I upload a "csv" format file located at "AlloRand rand_group4.csv", by clicking the button near "Upload allocation table (CSV file) for use in PRODUCTION status" to browse for the file, and clicking the button labeled "Upload File" to upload the file
