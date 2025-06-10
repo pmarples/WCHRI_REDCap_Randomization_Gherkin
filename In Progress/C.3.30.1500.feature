@@ -70,15 +70,11 @@ And I should not see "Group A" in the data entry form field "Blinded randomizati
 
 #Verify the user can only see a concealed allocation code in reports with no visible group assignment.  
 When I click on the link "Blind Rand Report"
-Then I should see a table header and rows containing the following values in the table:
-   | Record ID | Blinded randomization |
-   |6          | 1                     |
-
-And I should NOT see a table header and rows containing the following values in the table:
-   | Record ID | Blinded randomization |
-   |6          | Group A               |
+Then I should see a "1" within the "6" row of the column labeled "Blinded randomization" of the Reports table
+And I should NOT see a "Group A" within the "6" row of the column labeled "Blinded randomization" of the Reports table
 
 #C.3.30.1500.0200. For an open model, users without setup rights can view the assigned group allocation directly in the record and reports.  
+Scenario:
 Given I click on the link labeled "Add / Edit Records"
 And I select "6" on the dropdown field labeled "Choose an existing Record ID"
 And I click the bubble for the row labeled "Randomization" on the column labeled "Status"
@@ -88,43 +84,19 @@ Then I should see the radio labeled "Radomization group" with option "Drug A" se
 
 #Verify the user can see the assigned group allocation code directly in reports
 When I click on the link "Open Rand Report"
-Then I should see a table header and rows containing the following values in the table:
-   | Record ID | Randomization group |
-   |6          | Drug A (1)          |
+Then I should see a "Drug A (1)" within the "6" row of the column labeled "Randomization group" of the Reports table
 
 #C.3.30.1500.0300. All users with export rights can export randomized records, seeing the allocation assigned to each record as displayed in the record view.  
-
+Scenario:
+Given I click on the link "Data Exports, Reports, and Stats"
+And I click on the first button labeled "View Report"
+Then I should see a "Drug A (1)" within the "6" row of the column labeled "Randomization group" of the Reports table
+And I should see a "1" within the "6" row of the column labeled "Blinded randomization" of the Reports table
+And I should NOT see a "Group A" within the "6" row of the column labeled "Blinded randomization" of the Reports table
 
 #C.3.30.1500.0400. Only users with setup rights or admin privileges can access and export the full allocation table directly from the setup interface, regardless of model type.
+Scenario:#User without setup rights can not access and export the full allocation table directly from the setup interface, regardless of model type.
 
+Scenario:#User with setup rights can access and export the full allocation table directly from the setup interface, regardless of model type.
 
-
-
-
-
-#FUNCTIONAL_REQUIREMENT C.3.30.0700.0900: Choose concealed randomization text field.
-Scenario:
-When I click on the link labeled "Project Setup"
-And I click on the button labeled "Setup randomization"
-And I click on the button labeled "Add new randomization model"
-And I select the dropdown option "concealed_rand" for the field labeled "Choose your randomization field" 
-And I click the button "Save randomization model"
-Then I should see "Success! The randomization model has been saved!"
-
-##VERIFY 
-Scenario:
-When I click on the link labeled "Randomization"
-Then I should see a "concealed_rand" row of the column labeled "Target" of the Randomization Summary table
-
-#FUNCTIONAL_REQUIREMENT C.3.30.0700.1000: Save randomization model.
-Scenario:
-When I click on the button labeled "Add new randomization model"
-And I select "rand" on the dropdown field labeled "-select a field-"
-And I click a button labeled "Save randomization model" and accept the confirmation window
-And I should see a "Concealed allocation" icon in the column labeled "Allocation type" of the "concealed_rand" row of the column labeled "Target" of the Randomization Summary table
-
-#VERIFY Success - Save randomization model.
-Scenario:
-Then I should see a dialog containing " Success! The randomization model has been saved!"
-And I click on link labeled "Randomization"
-Then I should see a "rand" within the "8" row of the column labeled "Target" 
+Scenario:#Admin User can access and export the full allocation table directly from the setup interface, regardless of model type.
