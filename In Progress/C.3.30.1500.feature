@@ -13,11 +13,17 @@ Scenario:
 Given I login to REDCap with the user "Test_User1"
 And I create a new project named "C.3.30.1500" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "C.3.30.OpenBlind.xml", and clicking the "Create Project" button
 
-#SETUP Blind Randomization allocation tables
+#SETUP Blind Randomization allocation tables and Open Randomization allocation tables.
 Scenario:
 When I click on the link labeled "Project Setup"
-And I click on the button labeled "Setup randomization"
-And I click 
+And I click on the button labeled "Set up randomization"
+And I click on the icon labeled "Setup" in the row labeled "1"
+And I upload a "csv" format file located at "AlloRand blind1.csv", by clicking the button near "Upload allocation table (CSV file) for use in DEVELOPMENT status" to browse for the file, and clicking the button labeled "Upload File" to upload the file
+And I click on the link labeled "Project Setup"
+And I click on the button labeled "Set up randomization"
+And I click on the icon labeled "Setup" in the row labeled "2"
+And I upload a "csv" format file located at "AlloRand open1.csv", by clicking the button near "Upload allocation table (CSV file) for use in DEVELOPMENT status" to browse for the file, and clicking the button labeled "Upload File" to upload the file
+
 
 #C.3.30.1500.0100. For a blinded model, users without setup rights will see only a concealed allocation code in the record and reports, with no visible group assignment.  
 #C.3.30.1500.0200. For an open model, users without setup rights can view the assigned group allocation directly in the record and reports.  
