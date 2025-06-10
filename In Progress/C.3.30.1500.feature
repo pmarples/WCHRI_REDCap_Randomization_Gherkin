@@ -63,8 +63,14 @@ Given I login to REDCap with the user "Test_User2"
 And I click on the link labeled "Add / Edit Records"
 And I select "6" on the dropdown field labeled "Choose an existing Record ID"
 And I click the bubble for the row labeled "Randomization" on the column labeled "Status"
-Then 
 
+#Verify the user can only see a concealed allocation code in the record with no visible group assignment.  
+Then I should see "1" in the data entry form field "Blinded randomization" 
+And I should not see "Group A" in the data entry form field "Blinded randomization" 
+
+#Verify the user can only see a concealed allocation code in reports with no visible group assignment.  
+When I click on the link "OpenBlind"
+Then I should see a table 
 
 #C.3.30.1500.0200. For an open model, users without setup rights can view the assigned group allocation directly in the record and reports.  
 #C.3.30.1500.0300. All users with export rights can export randomized records, seeing the allocation assigned to each record as displayed in the record view.  
