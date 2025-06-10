@@ -33,14 +33,17 @@ And I upload a "csv" format file located at "AlloRand rand_group4.csv", by click
 #SETUP User Rights for user without randomization rights.
 Scenario: 
 When I click on the link labeled "User Rights"
-And I enter "Test_User1" into the input field labeled "Assign to role"
-And I select "1_FullRights" on the dropdown field labeled "Select Role"
+And I enter "Test_User2" into the input field labeled "Assign to role"
+And I select "5_NoRand" on the dropdown field labeled "Select Role"
 And I click on the button labeled exactly "Assign"
-Then I should see "User "Test_User1" has been successfully ASSIGNED to the user role "1_FullRights"."
+Then I should see "User "Test_User2" has been successfully ASSIGNED to the user role "5_NoRand"."
 Given I logout
 
 #C.3.30.1100.0100. User without randomize rights cannot randomize record.  
-Given I login to REDCap with the user "Test_User1"
+Given I login to REDCap with the user "Test_User2"
+And I click on the link labeled "Add / Edit Records"
+And I click on the button labeled "Add new record"
+
 
 #C.3.30.1100.0200. User with randomize rights can randomize record.  
 #C.3.30.1100.0300. Record's randomized value matches allocation table.  (Also tested in C.3.30.1000 as part of proving sequential assignment)
