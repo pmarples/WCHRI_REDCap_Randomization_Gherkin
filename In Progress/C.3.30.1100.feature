@@ -65,11 +65,12 @@ And I click on the button labeled "Save & Exit Form"
 #question: Is it enough to be able to predict what allocation is coming next?  Or do we need to "look" at the allocation table to verify it is the same as what is expected?
 
 #C.3.30.1100.0400 User with randomize rights cannot modify randomized record.
+When I click on the link labeled "Add / Edit Records"
+And I select "6" on the dropdown field labeled "Choose an existing Record ID"
+And I click the bubble for the row labeled "Randomization" on the column labeled "Status"
+Then I should see the radio labeled "Radomization group" with option "Drug A" selected
+And I CANNOT select the radio option "Drug B" for the field labeled "Randomization group"
 
-#save in case need to move to production
-When I click on the link labeled "Project Setup"
-And I click on the button labeled "Move project to production"
-And I click on the radio labeled "Keep ALL data saved so far" in the dialog box
-And I click on the button labeled "YES, Move to Production Status" in the dialog box to request a change in project status
-And I click on the button labeled "Ok"
-Then I should see Project status: "Production"
+Given I logout
+#End
+
