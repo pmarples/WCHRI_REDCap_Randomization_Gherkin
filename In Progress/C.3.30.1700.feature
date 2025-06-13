@@ -61,7 +61,20 @@ And I click on the link labeled "Randomization"
 And I click on the icon labeled "Dashboard" in the row labeled "1"
 #VERIFY Admin user can see View Allocation Table link from the Dashboard.
 Then I should see an icon labeled "View Admin Only"
+
 #Verify Admin can click on View Allocation Table link from the Dashboard.
-When 
+When I click on the first icon labeled "View Admin Only"
+Then I should see "View Allocation Table"
+
+Given I logout
 
 #C.3.30.1700.0200. User with dashboard rights cannot access View Allocation Table.
+Given I login to REDCap with the user "Test_User1"
+And I click on the link labeled "Randomization"
+And I click on the icon labeled "Dashboard" in the row labeled "1"
+
+#VERIFY Test User with dashboard permissions cannot see View Allocation Table link from the Dashboard.
+Then I should NOT see an icon labeled "View Admin Only"
+
+Given I logout
+#End
