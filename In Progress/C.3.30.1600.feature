@@ -26,7 +26,7 @@ When I click on the link labeled "User Rights"
 And I enter "Test_User2" into the input field labeled "Assign to role"
 And I select "6_NoRandDashboard" on the dropdown field labeled "Select Role"
 And I click on the button labeled exactly "Assign"
-Then I should see "User "Test_User2" has been successfully ASSIGNED to the user role "5_NoRandDashboard"."
+Then I should see "User "Test_User2" has been successfully ASSIGNED to the user role "6_NoRandDashboard"."
 
 #SETUP Blind Randomization allocation tables and Open Randomization allocation tables.
 Scenario:
