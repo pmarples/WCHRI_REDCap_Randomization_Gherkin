@@ -60,7 +60,33 @@ Scenario:
 Given I login to REDCap with the user "Test_User2"
 And I click on the link labeled "Randomization"
 
-#VERIFY:
-Then I do not see a link labeled "Dashboard"
+#VERIFY: Test user without dashboard rights cannot access randomization dashboard.
+Then I should not see an icon labeled "Dashboard" in the row labeled "1"
+And I should not see an icon labeled "Dashboard" in the row labeled "2"
 
-#C.3.30.1600.0200. User with dashboard rights cannot access randomization dashboard.
+Given I logout
+
+#C.3.30.1600.0200. User with dashboard rights CAN access randomization dashboard.
+Given I login to REDCap with the user "Test_User1"
+And I click on the link labeled "Randomization"
+
+#VERIFY: Test user with dashboard rights CAN access randomization dashboard and will see only a concealed allocation code, with no visible group assignment.
+And I click on an icon labeled "Dashboard" in the row labeled "1"
+Then I should see a table header and rows containing the following values:
+  | Used | Not Used | Allocated records |
+  | 1    | 4        | 6                 | 
+
+#Test user with dashboard rights CAN access randomization dashboard and will see group assignment for open randomization model.
+Scenario:
+Given I click on the link labeled "Randomization"
+
+#VERIFY: Test user with dashboard rights CAN access randomization dashboard and will see group assignment for open randomization model.
+And I click on an icon labeled "Dashboard" in the row labeled "1"
+Then I should see a table header and rows containing the following values:
+  | Used | Not Used | Allocated records | Randomizaton group |
+  | 1    | 4        | 6                 | Drug A (1)         |
+  | 0    | 5        |                   | Drug B (2)         |
+  | 0    | 5        |                   | Placebo (3)        |
+
+  Given I logout
+  #End
