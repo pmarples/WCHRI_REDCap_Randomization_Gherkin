@@ -26,7 +26,7 @@ When I click on the link labeled "User Rights"
 And I enter "Test_Admin" into the input field labeled "Assign to role"
 And I select "1_FullRights" on the dropdown field labeled "Select Role"
 And I click on the button labeled exactly "Assign"
-Then I should see "User "Test_User2" has been successfully ASSIGNED to the user role "1_FullRights"."
+Then I should see "User "Test_Admin" has been successfully ASSIGNED to the user role "1_FullRights"."
 
 #SETUP Blind Randomization allocation tables and Open Randomization allocation tables.
 Scenario:
@@ -54,3 +54,14 @@ Then I should see a dialog containing the following text: "Record ID "6" was ran
 And I click on the button labeled "Close"
 And I click on the button labeled "Save & Exit Form"
 Given I Logout
+
+Scenario:#C.3.30.1700.0100. Admin accesses View Allocation Table page.  
+Given I login to REDCap with the user "Test_Admin"
+And I click on the link labeled "Randomization"
+And I click on the icon labeled "Dashboard" in the row labeled "1"
+#VERIFY Admin user can see View Allocation Table link from the Dashboard.
+Then I should see an icon labeled "View Admin Only"
+#Verify Admin can click on View Allocation Table link from the Dashboard.
+When 
+
+#C.3.30.1700.0200. User with dashboard rights cannot access View Allocation Table.
