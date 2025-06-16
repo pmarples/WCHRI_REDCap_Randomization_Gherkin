@@ -1,3 +1,8 @@
+#Question:For #C.3.30.1200.0200. Users with logging privileges and without randomization privileges will not see 
+#record's randomized values.
+#This does not seem to be the case - Users with logging privileges and without randomization privileges CAN see record's 
+#randomized values. (normal unblinded stratified randomization) - should this be only for certain Randomization types?
+
 Feature: C.3.30.1200.	User Interface: The system shall support an audit trail showing who randomized the record and the date-time of randomization.
 # Randomization C.3.30.1200.0100 to C.3.30.1200.0200
 #C.3.30.1200.0100. Logging of record's randomization includes user and timestamp.  
