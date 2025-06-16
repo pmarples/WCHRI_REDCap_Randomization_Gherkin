@@ -90,6 +90,9 @@ Then I should see a dialog containing the following text: "Record ID "7" was ran
 And I click on the button labeled "Close"
 And I click on the button labeled "Save & Exit Form"
 
+#VERIFY: Logging
+
+
 Scenario: #C.3.30.1800.0200. Admin can edit target alternative with reason.  
 Given I click on the link labeled "Randomization"
 And I click on the icon labeled "Dashboard" in the row labeled "2"
