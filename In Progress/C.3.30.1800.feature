@@ -5,16 +5,10 @@ Feature: C.3.30.1800.	Project Interface Administrator Access: The system shall s
 #C.3.30.1800.0300. Admin can manually randomize a record with reason.  
 #C.3.30.1800.0400. Admin can mark a sequence as unavailable with reason.  
 #C.3.30.1800.0500. Admin can restore allocation with reason.
+#C.3.30.1800.0600. Admin can remove randomization with reason.
 
 As a REDCap end user
 I want to see that Randomization is functioning as expected
-
-#SETUP - Create new project
-Scenario:
-Given I login to REDCap with the user "Test_Admin"
-And I create a new project named "C.3.30.1800" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "C.3.30.Rand.xml", and clicking the "Create Project" button
-
-Start set up same as 17, then test the table options:1700 posted below.
 
 #SETUP - Create new project
 Scenario:
@@ -116,13 +110,12 @@ Scenario:#VERIFY that the change to the alternate is reflected in the Randomizat
 #Download allocation table - "1" should appear in the redcap_randomization number column for row 4 in the csv file and "3" in the redcap_randomization_group column for row 4.
 
 Senario: #C.3.30.1800.0300. Admin can manually randomize a record with reason. 
-Given I login to REDCap with the user "Test_Admin"
-And I click on the link labeled "Randomization"
+Given I click on the link labeled "Randomization"
 And I click on the icon labeled "Dashboard" in the row labeled "2"
 And I click on the first icon labeled "View Admin Only"
 Then I should see "View Allocation Table"
 
-When I click on the icon labeled "Manual Randomization" in the row labeled "4"
+When I click on the icon labeled "Manual Randomization" in the row labeled "3"
 Then I should see "Manually assign an existing record"
 And I should see "Specify Reason"
 
@@ -130,10 +123,93 @@ When I enter "Test reason" into the input field labeled "Specify Reason" in the 
 And I enter "1" into the input field labeled "Existing record to assign" in the dialog box
 And I enter "CONFIRM" into the input field labeled "Type "CONFIRM"" in the dialog box
 And I click the button labeled "Confirm"
-Then I should see a "1" within the "4" row of the column labeled "Record"
+Then I should see a "1" within the "3" row of the column labeled "Record"
 
 Scenario: #VERIFY the Manual record assignment is reflected in the record.
+When I click on the link labeled "Add / Edit Records"
+And I select "1" on the dropdown field labeled "Choose an existing Record ID"
+And I click the bubble for the row labeled "Randomization" on the column labeled "Status"
+Then I should see the radio labeled "Randomization Group" with option "Placebo"  
 
+Scenario: #C.3.30.1800.0400. Admin can mark a sequence as unavailable with reason. 
+Given I click on the link labeled "Randomization"
+And I click on the icon labeled "Dashboard" in the row labeled "2"
+And I click on the first icon labeled "View Admin Only"
+Then I should see "View Allocation Table"
+
+When I click on the icon labeled "Make Sequence Unavailable" in the row labeled "4"
+Then I should see "Make this allocation unavailable to future randomizations"
+And I should see "Specify Reason"
+
+When I enter "Test reason" into the input field labeled "Specify Reason" in the dialog box
+And I enter "CONFIRM" into the input field labeled "Type "CONFIRM"" in the dialog box
+And I click the button labeled "Confirm"
+#note for automation: this icon doesn't seem to be labeled:
+Then I should see an icon labeled "Sequence Unavailable" within the "4" row of the column labeled "Record"
+And I should see an icon labeled "Restore Availability" in the "4" row of the column labeled "Edit"
+
+Scenario: #VERIFY Sequence Unavailable when randomizing a record.
+Given I click on the link labeled "Add/Edit Records"
+And I click on the button labeled "Add new record"
+And I click on the icon labeled "Status" for the row labeled "Randomization" 
+And I click on a button labeled "Randomize" for the field labeled "Randomization Group"
+And I click on the button labeled "Randomize"
+Then I should see a dialog containing the following text: "Record ID "8" was randomized for the field "Randomization group" and assigned the value "Drug B" (2)." 
+And I should NOT see a dialog containing the following text: "Record ID "8" was randomized for the field "Randomization group" and assigned the value "Drug A" (1)." 
+And I click on the button labeled "Close"
+
+Scenario: #C.3.30.1800.0500. Admin can restore allocation with reason.
+Given I click on the link labeled "Randomization"
+And I click on the icon labeled "Dashboard" in the row labeled "2"
+And I click on the first icon labeled "View Admin Only"
+Then I should see "View Allocation Table"
+
+When I click on the icon labeled "Restore Availability" in the "4" row of the column labeled "Edit"
+Then I should see "restore availability of this allocation"
+And I should see "Specify Reason"
+
+When I enter "Test reason" into the input field labeled "Specify Reason" in the dialog box
+And I enter "CONFIRM" into the input field labeled "Type "CONFIRM"" in the dialog box
+And I click the button labeled "Confirm"
+Then I should see an icon labeled "Edit Target Field" within the "4" row of the column labeled "Record"
+And I should see an icon labeled "Edit Target Alternative" within the "4" row of the column labeled "Edit"
+And I should see an icon labeled "Manual Randomization" within the "4" row of the column labeled "Edit"
+And I should see an icon labeled "Make Sequence Unavailable" within the "4" row of the column labeled "Edit"
+
+Scenario: #VERIFY restored value is used when randomizing a record
+Given I click on the link labeled "Add/Edit Records"
+And I click on the button labeled "Add new record"
+And I click on the icon labeled "Status" for the row labeled "Randomization" 
+And I click on a button labeled "Randomize" for the field labeled "Randomization Group"
+And I click on the button labeled "Randomize"
+Then I should see a dialog containing the following text: "Record ID "9" was randomized for the field "Randomization group" and assigned the value "Drug A" (1)." 
+And I should NOT see a dialog containing the following text: "Record ID "9" was randomized for the field "Randomization group" and assigned the value "Placebo" (3)." 
+And I click on the button labeled "Close"
+
+Scenario: #C.3.30.1800.0600. Admin can remove randomization with reason.
+Given I click on the link labeled "Randomization"
+And I click on the icon labeled "Dashboard" in the row labeled "2"
+And I click on the first icon labeled "View Admin Only"
+Then I should see "View Allocation Table"
+
+When I click on the icon labeled "Remove Randomization" in the "1" row of the column labeled "Edit"
+Then I should see "Confirm removal of this randomization allocation."
+And I should see "Specify Reason"
+
+When I enter "Test reason" into the input field labeled "Specify Reason" in the dialog box
+And I enter "CONFIRM" into the input field labeled "Type "CONFIRM"" in the dialog box
+And I click the button labeled "Confirm"
+Then I should see an icon labeled "Edit Target Field" within the "4" row of the column labeled "Record"
+And I should see an icon labeled "Edit Target Alternative" within the "4" row of the column labeled "Edit"
+And I should see an icon labeled "Manual Randomization" within the "4" row of the column labeled "Edit"
+And I should see an icon labeled "Make Sequence Unavailable" within the "4" row of the column labeled "Edit"
+And I should NOT see a "6" within the "1" row of the column labeled "Record"
+
+Scenario: #VERIFY record 6 is now not randomized
+Given I click on the link labeled "Add / Edit Records"
+And I select "6" on the dropdown field labeled "Choose an existing Record ID"
+And I click the bubble for the row labeled "Randomization" on the column labeled "Status"
+Then I should see a button labeled "Randomize" on the field labeled "Randomization group" 
 
 Given I logout
 #End
