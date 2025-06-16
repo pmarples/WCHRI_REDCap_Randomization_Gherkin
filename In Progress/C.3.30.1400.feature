@@ -1,3 +1,7 @@
+#Question
+#In the Community, https://redcap.vumc.org/community/post.php?id=243308, 1400 has the same .0100 Scenario as 1300 
+#which I think is a mistake... Is there an updated Functional requirement list I can refer to?
+
 Feature: C.3.30.1400.	User Interface: The system shall support single randomization per model and multiple randomizations per record.
 # Randomization C.3.30.1400.0100
 
