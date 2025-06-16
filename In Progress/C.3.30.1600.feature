@@ -1,3 +1,9 @@
+#questions pending response:
+#Question 1. I believe .0200 should be "User with dashboard rights CAN access randomization dashboard." 
+##Is this correct?
+#Question 2. I believe that .0200 should be checking that there is access to open, but also that when they look at 
+##blinded, they will see only a concealed allocation code, with no visible group assignment.
+
 Feature: C.3.30.1600.	User Interface: The system shall ensure users with randomization dashboard rights can view the randomization dashboard.	
 # Randomization C.3.30.1600.0100 to C.3.30.1600.0200
 #C.3.30.1600.0100. User without dashboard rights cannot access randomization dashboard.  
