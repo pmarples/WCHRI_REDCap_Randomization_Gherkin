@@ -90,7 +90,12 @@ Then I should see a dialog containing the following text: "Record ID "7" was ran
 And I click on the button labeled "Close"
 And I click on the button labeled "Save & Exit Form"
 
-#VERIFY: Logging
+Scenario: #VERIFY: Logging
+Given I click on the link labeled "Logging"
+Then I should see a table header and rows containing the following values in the logging table:
+  | Username   | Action        | List of Data Changes OR Fields Exported      |
+  | test_admin | Manage/Design | Update randomization allocation table (development) (aid: #, target_field: "3", reason: "Test reason")|
+
 
 
 Scenario: #C.3.30.1800.0200. Admin can edit target alternative with reason.  
@@ -111,6 +116,12 @@ Then I should see a "1" within the "3" row of the column labeled "Alternate"
 
 Scenario:#VERIFY that the change to the alternate is reflected in the Randomization Allocation Table
 #Download allocation table - "1" should appear in the redcap_randomization number column for row 4 in the csv file and "3" in the redcap_randomization_group column for row 4.
+
+Scenario: #VERIFY: Logging
+Given I click on the link labeled "Logging"
+Then I should see a table header and rows containing the following values in the logging table:
+  | Username   | Action        | List of Data Changes OR Fields Exported      |
+  | test_admin | Manage/Design | Update randomization allocation table (development) (aid: #, target_field_alt: "1", reason: "Test reason")|
 
 Senario: #C.3.30.1800.0300. Admin can manually randomize a record with reason. 
 Given I click on the link labeled "Randomization"
@@ -133,6 +144,12 @@ When I click on the link labeled "Add / Edit Records"
 And I select "1" on the dropdown field labeled "Choose an existing Record ID"
 And I click the bubble for the row labeled "Randomization" on the column labeled "Status"
 Then I should see the radio labeled "Randomization Group" with option "Placebo"  
+
+Scenario: #VERIFY: Logging
+Given I click on the link labeled "Logging"
+Then I should see a table header and rows containing the following values in the logging table:
+  | Username   | Action        | List of Data Changes OR Fields Exported      |
+  | test_admin | Manage/Design | Update randomization allocation table (development)(aid: #, is_used_by: "1", reason: "Test reason")|
 
 Scenario: #C.3.30.1800.0400. Admin can mark a sequence as unavailable with reason. 
 Given I click on the link labeled "Randomization"
@@ -160,6 +177,12 @@ And I click on the button labeled "Randomize"
 Then I should see a dialog containing the following text: "Record ID "8" was randomized for the field "Randomization group" and assigned the value "Drug B" (2)." 
 And I should NOT see a dialog containing the following text: "Record ID "8" was randomized for the field "Randomization group" and assigned the value "Drug A" (1)." 
 And I click on the button labeled "Close"
+
+Scenario: #VERIFY: Logging
+Given I click on the link labeled "Logging"
+Then I should see a table header and rows containing the following values in the logging table:
+  | Username   | Action        | List of Data Changes OR Fields Exported      |
+  | test_admin | Manage/Design | Update randomization allocation table (development)(aid: #, is_used_by: "#-UNAVAILABLE", reason: "Test reason")|
 
 Scenario: #C.3.30.1800.0500. Admin can restore allocation with reason.
 Given I click on the link labeled "Randomization"
@@ -189,6 +212,12 @@ Then I should see a dialog containing the following text: "Record ID "9" was ran
 And I should NOT see a dialog containing the following text: "Record ID "9" was randomized for the field "Randomization group" and assigned the value "Placebo" (3)." 
 And I click on the button labeled "Close"
 
+Scenario: #VERIFY: Logging
+Given I click on the link labeled "Logging"
+Then I should see a table header and rows containing the following values in the logging table:
+  | Username   | Action        | List of Data Changes OR Fields Exported      |
+  | test_admin | Manage/Design | Update randomization allocation table (development)(aid: #, is_used_by: "", reason: "Test reason")|
+  
 Scenario: #C.3.30.1800.0600. Admin can remove randomization with reason.
 Given I click on the link labeled "Randomization"
 And I click on the icon labeled "Dashboard" in the row labeled "2"
@@ -214,5 +243,13 @@ And I select "6" on the dropdown field labeled "Choose an existing Record ID"
 And I click the bubble for the row labeled "Randomization" on the column labeled "Status"
 Then I should see a button labeled "Randomize" on the field labeled "Randomization group" 
 
+Scenario: #VERIFY: Logging
+Given I click on the link labeled "Logging"
+Then I should see a table header and rows containing the following values in the logging table:
+  | Username   | Action        | List of Data Changes OR Fields Exported      |
+  | test_admin | Manage/Design | Update randomization allocation table (development)(aid: #, is_used_by: "", reason: "Test reason")|
+  | test_admin | Update record 6 | rand_group=''|
+  | test_admin | Randomize record 6 | Remove randomization|
+
 Given I logout
-#End
+#END
