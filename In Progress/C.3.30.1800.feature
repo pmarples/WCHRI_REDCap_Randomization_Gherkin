@@ -96,8 +96,6 @@ Then I should see a table header and rows containing the following values in the
   | Username   | Action        | List of Data Changes OR Fields Exported      |
   | test_admin | Manage/Design | Update randomization allocation table (development) (aid: #, target_field: "3", reason: "Test reason")|
 
-
-
 Scenario: #C.3.30.1800.0200. Admin can edit target alternative with reason.  
 Given I click on the link labeled "Randomization"
 And I click on the icon labeled "Dashboard" in the row labeled "2"
@@ -114,14 +112,19 @@ And I enter "CONFIRM" into the input field labeled "Type "CONFIRM"" in the dialo
 And I click the button labeled "Confirm"
 Then I should see a "1" within the "3" row of the column labeled "Alternate"
 
-Scenario:#VERIFY that the change to the alternate is reflected in the Randomization Allocation Table
-#Download allocation table - "1" should appear in the redcap_randomization number column for row 4 in the csv file and "3" in the redcap_randomization_group column for row 4.
-
 Scenario: #VERIFY: Logging
 Given I click on the link labeled "Logging"
 Then I should see a table header and rows containing the following values in the logging table:
   | Username   | Action        | List of Data Changes OR Fields Exported      |
   | test_admin | Manage/Design | Update randomization allocation table (development) (aid: #, target_field_alt: "1", reason: "Test reason")|
+
+Scenario:#VERIFY that the change to the alternate is reflected in the Randomization Allocation Table
+Given I click on the link labeled "Project Setup"
+And I click on the button labeled "Set up randomization"
+And I click on the icon labeled "Setup" in the row labeled "2"
+And I click on the button "Download table" near "Upload allocation table (CSV file) for use in DEVELOPMENT status"
+Note to Automated test editor:  Is there a way to check the csv file for the following?  If not possible, then we could perhaps drop line 121-128.
+#Download allocation table - "1" should appear in the redcap_randomization number column for row 4 in the csv file and "3" in the redcap_randomization_group column for row 4.
 
 Senario: #C.3.30.1800.0300. Admin can manually randomize a record with reason. 
 Given I click on the link labeled "Randomization"
@@ -139,17 +142,17 @@ And I enter "CONFIRM" into the input field labeled "Type "CONFIRM"" in the dialo
 And I click the button labeled "Confirm"
 Then I should see a "1" within the "3" row of the column labeled "Record"
 
-Scenario: #VERIFY the Manual record assignment is reflected in the record.
-When I click on the link labeled "Add / Edit Records"
-And I select "1" on the dropdown field labeled "Choose an existing Record ID"
-And I click the bubble for the row labeled "Randomization" on the column labeled "Status"
-Then I should see the radio labeled "Randomization Group" with option "Placebo"  
-
 Scenario: #VERIFY: Logging
 Given I click on the link labeled "Logging"
 Then I should see a table header and rows containing the following values in the logging table:
   | Username   | Action        | List of Data Changes OR Fields Exported      |
   | test_admin | Manage/Design | Update randomization allocation table (development)(aid: #, is_used_by: "1", reason: "Test reason")|
+
+Scenario: #VERIFY the Manual record assignment is reflected in the record.
+When I click on the link labeled "Add / Edit Records"
+And I select "1" on the dropdown field labeled "Choose an existing Record ID"
+And I click the bubble for the row labeled "Randomization" on the column labeled "Status"
+Then I should see the radio labeled "Randomization Group" with option "Placebo"  
 
 Scenario: #C.3.30.1800.0400. Admin can mark a sequence as unavailable with reason. 
 Given I click on the link labeled "Randomization"
@@ -164,9 +167,14 @@ And I should see "Specify Reason"
 When I enter "Test reason" into the input field labeled "Specify Reason" in the dialog box
 And I enter "CONFIRM" into the input field labeled "Type "CONFIRM"" in the dialog box
 And I click the button labeled "Confirm"
-#note for automation: this icon doesn't seem to be labeled:
-Then I should see an icon labeled "Sequence Unavailable" within the "4" row of the column labeled "Record"
+Then I should see an icon labeled "Sequence Unavailable" within the "4" row of the column labeled "Record" #note for automation: this icon doesn't seem to be labeled:
 And I should see an icon labeled "Restore Availability" in the "4" row of the column labeled "Edit"
+
+Scenario: #VERIFY: Logging
+Given I click on the link labeled "Logging"
+Then I should see a table header and rows containing the following values in the logging table:
+  | Username   | Action        | List of Data Changes OR Fields Exported      |
+  | test_admin | Manage/Design | Update randomization allocation table (development)(aid: #, is_used_by: "#-UNAVAILABLE", reason: "Test reason")|
 
 Scenario: #VERIFY Sequence Unavailable when randomizing a record.
 Given I click on the link labeled "Add/Edit Records"
@@ -177,12 +185,6 @@ And I click on the button labeled "Randomize"
 Then I should see a dialog containing the following text: "Record ID "8" was randomized for the field "Randomization group" and assigned the value "Drug B" (2)." 
 And I should NOT see a dialog containing the following text: "Record ID "8" was randomized for the field "Randomization group" and assigned the value "Drug A" (1)." 
 And I click on the button labeled "Close"
-
-Scenario: #VERIFY: Logging
-Given I click on the link labeled "Logging"
-Then I should see a table header and rows containing the following values in the logging table:
-  | Username   | Action        | List of Data Changes OR Fields Exported      |
-  | test_admin | Manage/Design | Update randomization allocation table (development)(aid: #, is_used_by: "#-UNAVAILABLE", reason: "Test reason")|
 
 Scenario: #C.3.30.1800.0500. Admin can restore allocation with reason.
 Given I click on the link labeled "Randomization"
@@ -198,9 +200,15 @@ When I enter "Test reason" into the input field labeled "Specify Reason" in the 
 And I enter "CONFIRM" into the input field labeled "Type "CONFIRM"" in the dialog box
 And I click the button labeled "Confirm"
 Then I should see an icon labeled "Edit Target Field" within the "4" row of the column labeled "Record"
-And I should see an icon labeled "Edit Target Alternative" within the "4" row of the column labeled "Edit"
+And I should see an icon labeled "Edit Target Alternate" within the "4" row of the column labeled "Edit"
 And I should see an icon labeled "Manual Randomization" within the "4" row of the column labeled "Edit"
 And I should see an icon labeled "Make Sequence Unavailable" within the "4" row of the column labeled "Edit"
+
+Scenario: #VERIFY: Logging
+Given I click on the link labeled "Logging"
+Then I should see a table header and rows containing the following values in the logging table:
+  | Username   | Action        | List of Data Changes OR Fields Exported      |
+  | test_admin | Manage/Design | Update randomization allocation table (development)(aid: #, is_used_by: "", reason: "Test reason")|
 
 Scenario: #VERIFY restored value is used when randomizing a record
 Given I click on the link labeled "Add/Edit Records"
@@ -212,12 +220,6 @@ Then I should see a dialog containing the following text: "Record ID "9" was ran
 And I should NOT see a dialog containing the following text: "Record ID "9" was randomized for the field "Randomization group" and assigned the value "Placebo" (3)." 
 And I click on the button labeled "Close"
 
-Scenario: #VERIFY: Logging
-Given I click on the link labeled "Logging"
-Then I should see a table header and rows containing the following values in the logging table:
-  | Username   | Action        | List of Data Changes OR Fields Exported      |
-  | test_admin | Manage/Design | Update randomization allocation table (development)(aid: #, is_used_by: "", reason: "Test reason")|
-  
 Scenario: #C.3.30.1800.0600. Admin can remove randomization with reason.
 Given I click on the link labeled "Randomization"
 And I click on the icon labeled "Dashboard" in the row labeled "2"
@@ -237,19 +239,19 @@ And I should see an icon labeled "Manual Randomization" within the "4" row of th
 And I should see an icon labeled "Make Sequence Unavailable" within the "4" row of the column labeled "Edit"
 And I should NOT see a "6" within the "1" row of the column labeled "Record"
 
+Scenario: #VERIFY: Logging
+Given I click on the link labeled "Logging"
+Then I should see a table header and rows containing the following values in the logging table:
+  | Username   | Action        | List of Data Changes OR Fields Exported      |
+  | test_admin | Randomize record 6 | Remove randomization|
+  | test_admin | Update record 6 | rand_group=''|
+  | test_admin | Manage/Design | Update randomization allocation table (development)(aid: #, is_used_by: "", reason: "Test reason")|
+    
 Scenario: #VERIFY record 6 is now not randomized
 Given I click on the link labeled "Add / Edit Records"
 And I select "6" on the dropdown field labeled "Choose an existing Record ID"
 And I click the bubble for the row labeled "Randomization" on the column labeled "Status"
 Then I should see a button labeled "Randomize" on the field labeled "Randomization group" 
-
-Scenario: #VERIFY: Logging
-Given I click on the link labeled "Logging"
-Then I should see a table header and rows containing the following values in the logging table:
-  | Username   | Action        | List of Data Changes OR Fields Exported      |
-  | test_admin | Manage/Design | Update randomization allocation table (development)(aid: #, is_used_by: "", reason: "Test reason")|
-  | test_admin | Update record 6 | rand_group=''|
-  | test_admin | Randomize record 6 | Remove randomization|
 
 Given I logout
 #END
