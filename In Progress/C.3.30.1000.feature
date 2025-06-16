@@ -1,3 +1,10 @@
+Question: I'm a bit confused about "C.3.30.1000.100: The system shall prevent uploading an allocation table that 
+#lacks sequential assignment. " When I upload the attached file - it has a skip in data at row 12, but the file is 
+#uploaded successfully. The redcap_randomization_group and gender columns do not need to be sequential. I must not 
+#understand what this functional requirement refers to... Can someone clarify what a file with non-sequential 
+#assignment looks like?
+AlloRand rand_group nonseq.csv
+
 Feature: C.3.30.1000.	User Interface: The system shall support the sequential assignment of allocation table entries to participants based on stratification.
 # Randomization 
 # C.3.30.1000.100: The system shall prevent uploading an allocation table that lacks sequential assignment.  
