@@ -1,7 +1,3 @@
-#Questions:Sorry - this one isn't ready... I have a question for C.3.30.0900.0100:  
-##NOTE: Normal user can Modify Changes to the Step 4: Automatic Triggering Option in Production - is this expected? 
-# If yes, should it be validated?
-
 Feature: C.3.30.0900.	User Interface: The system shall ensure users with Randomization Setup rights lock randomization models and allocation table while in production mode.	
 # Randomization
 # C.3.30.0900.0100. Normal user cannot modify setup in production.  
@@ -66,8 +62,6 @@ And I verify I cannot click on the button labeled "Download table" on the first 
 
 #verify unable to upload or download allocation table for use in Production
 And I verify I cannot click on the button labeled "Download table" on the second button labeled "Download table"
-
-##NOTE: Normal user can Modify Changes to the Step 4: Automatic Triggering Option in Production - is this expected? If yes, should it be validated?
 
 Given I logout
 
