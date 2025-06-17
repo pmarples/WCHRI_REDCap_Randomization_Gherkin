@@ -1,6 +1,3 @@
-#Note  this script is ready and tested pending the decision to add 0600.  
-#should the verdict be NOT to add 0600, then I need to remove those steps before finalizing.
-
 Feature: C.3.30.1800.	Project Interface Administrator Access: The system shall support the administrator role's ability to perform the following actions with specifying the reason on the randomization module allocation table: perform edit target field, edit target allocation, manual randomization, and make sequence unavailable.	
 # Randomization C.3.30.1800.0100 to C.3.30.1800.0500
 #C.3.30.1800.0100. Admin can edit target field with reason.  
