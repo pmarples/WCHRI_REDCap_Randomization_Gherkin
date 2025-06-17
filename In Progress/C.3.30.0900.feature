@@ -7,7 +7,6 @@ Feature: C.3.30.0900.	User Interface: The system shall ensure users with Randomi
 # C.3.30.0900.0500. Admin cannot modify existing allocation table in production.  
 # C.3.30.0900.0600. Admin can upload additional allocations to existing table in production.
 
-
 As a REDCap end user
 I want to see that Randomization is functioning as expected
 
