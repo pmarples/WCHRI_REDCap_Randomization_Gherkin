@@ -1,13 +1,15 @@
 #questions pending response:
 #Question 1. I believe .0200 should be "User with dashboard rights CAN access randomization dashboard." 
-##Is this correct?
+##Is this correct? YES - updated in line 10, but needs to be corrected further down.
 #Question 2. I believe that .0200 should be checking that there is access to open, but also that when they look at 
-##blinded, they will see only a concealed allocation code, with no visible group assignment.
+##blinded, they will see only a concealed allocation code, with no visible group assignment. - Yes this is true too.
+C.3.30.1600.0100 ensures that access is denied when the user lacks the appropriate permission.
+C.3.30.1600.0200 ensures that access is granted when the user has the correct dashboard rights.
 
 Feature: C.3.30.1600.	User Interface: The system shall ensure users with randomization dashboard rights can view the randomization dashboard.	
 # Randomization C.3.30.1600.0100 to C.3.30.1600.0200
 #C.3.30.1600.0100. User without dashboard rights cannot access randomization dashboard.  
-#C.3.30.1600.0200. User with dashboard rights cannot access randomization dashboard.
+#C.3.30.1600.0200 – User with dashboard rights can access the randomization dashboard.
 
 As a REDCap end user
 I want to see that Randomization is functioning as expected
