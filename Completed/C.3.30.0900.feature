@@ -110,7 +110,7 @@ Scenario: C.3.30.0900.0600. Admin can upload additional allocations to existing 
 When I click on the link labeled "Upload more allocations? (Administrators only)"
 Then I should see a button labeled "Choose File"
 And I should see a button labeled "Upload File"
-When I upload a "csv" format file located at "RandomizationAllocationTemplate_Prod.csv", by clicking the button near "for use in PRODUCTION status" to browse for the file, and clicking the button labeled "Upload File" to upload the file
+When I upload a "csv" format file located at "RandomizationAllocationTable_Prod0900", by clicking the button near "for use in PRODUCTION status" to browse for the file, and clicking the button labeled "Upload File" to upload the file
 Then I should see "Success! New assignments were appended to your existing randomization allocation table!"
 
 #verify logging for the upload
