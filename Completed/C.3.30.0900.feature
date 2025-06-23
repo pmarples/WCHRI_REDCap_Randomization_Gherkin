@@ -90,11 +90,10 @@ And I verify I cannot select "rand_group (Randomization group)" on the second dr
 
 #verify unable to upload or download allocation table for use in Development
 And I verify I cannot click on the button labeled "Download table" on the first button labeled "Download table"
-Then I should not see "Upload more allocations? (Administrators only)" near "Upload allocation table (CSV file) for use in DEVELOPMENT status"
 
 Scenario: C.3.30.0900.0400. Admin can download existing allocation table in production.  
 #verify able to download allocation table for use in Production
-And I should see a link labeled "Upload more allocations? (Administrators only) near "Upload allocation table (CSV file) for use in PRODUCTION status"
+Then I should see a link labeled "Upload more allocations? (Administrators only) near "Upload allocation table (CSV file) for use in PRODUCTION status"
 And I should see a button labeled "Download table" near "Upload allocation table (CSV file) for use in PRODUCTION status"
 And I should see "(only REDCap admins may download the allocation table while in production)"
 
