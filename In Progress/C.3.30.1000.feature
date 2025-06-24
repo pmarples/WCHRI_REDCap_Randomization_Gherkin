@@ -1,14 +1,8 @@
-Question: I'm a bit confused about "C.3.30.1000.100: The system shall prevent uploading an allocation table that 
-#lacks sequential assignment. " When I upload the attached file - it has a skip in data at row 12, but the file is 
-#uploaded successfully. The redcap_randomization_group and gender columns do not need to be sequential. I must not 
-#understand what this functional requirement refers to... Can someone clarify what a file with non-sequential 
-#assignment looks like?
-AlloRand rand_group nonseq.csv
-#FR Pending clarification from Luke Stevens
+#Question - Aren't .100 and .200 the same?
 
 Feature: C.3.30.1000.	User Interface: The system shall support the sequential assignment of allocation table entries to participants based on stratification.
 # Randomization 
-# C.3.30.1000.100: The system shall prevent uploading an allocation table that lacks sequential assignment.  
+# C.3.30.1000.100: The system shall allocate an entry for a record with specified stratification values following the order in which the entries for the stratum were uploaded into the allocation table.
 # C.3.30.1000.200: The system shall assign the next available allocation entry sequentially to each new record.
 
 As a REDCap end user
@@ -29,7 +23,7 @@ And I select "1_FullRights" on the dropdown field labeled "select role"
 And I click on the button labeled exactly "Assign"
 Then I should see "User "Test_User1" has been successfully ASSIGNED to the user role "1_FullRights"."
 
-C.3.30.1000.100: The system shall prevent uploading an allocation table that lacks sequential assignment.  
+C.3.30.1000.100 – The system shall allocate an entry for a record with specified stratification values following the order in which the entries for the stratum were uploaded into the allocation table.  
 Scenario:
 When I click on the link labeled "Project Setup"
 And I click on the button labeled "Setup randomization"
