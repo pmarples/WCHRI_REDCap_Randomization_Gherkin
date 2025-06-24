@@ -1,21 +1,17 @@
-#Question - Aren't .100 and .200 the same?
-
-Feature: C.3.30.1000.	User Interface: The system shall support the sequential assignment of allocation table entries to participants based on stratification.
-# Randomization 
-# C.3.30.1000.100: The system shall allocate an entry for a record with specified stratification values following the order in which the entries for the stratum were uploaded into the allocation table.
-# C.3.30.1000.200: The system shall assign the next available allocation entry sequentially to each new record.
+Feature: C.3.30.1000. User Interface: The system shall support the sequential assignment of allocation table entries to participants based on stratification.
+# C.3.30.1000.0100: The system shall allocate an entry for a record with specified stratification values following the order in which the entries for the stratum were uploaded into the allocation table.
+# C.3.30.1000.0200: The system shall assign the next available allocation entry sequentially to each new record.
+# C.3.30.1000.0300: The system shall reject allocation tables missing required structural elements (e.g., target field column, inconsistent stratum combinations).
 
 As a REDCap end user
 I want to see that Randomization is functioning as expected
 
-#SETUP - Create new project
-Scenario:
+Scenario: #SETUP - Create new project
 Given I login to REDCap with the user "Test_User1"
 And I create a new project named "C.3.30.1000" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "C.3.30.OneRand.xml", and clicking the "Create Project" button
 #SETUP User Rights
 
-#SETUP- Give User 1 full rights
-Scenario: 
+Scenario: #SETUP- Give User 1 full rights
 When I click on the link labeled "User Rights"
 And I click on the link labeled "Test_User1" 
 And I click on the button labeled "Assign to role"
@@ -23,18 +19,12 @@ And I select "1_FullRights" on the dropdown field labeled "select role"
 And I click on the button labeled exactly "Assign"
 Then I should see "User "Test_User1" has been successfully ASSIGNED to the user role "1_FullRights"."
 
-C.3.30.1000.100 – The system shall allocate an entry for a record with specified stratification values following the order in which the entries for the stratum were uploaded into the allocation table.  
-Scenario:
-When I click on the link labeled "Project Setup"
-And I click on the button labeled "Setup randomization"
-And I click on the icon labeled "Setup" in the row labeled "1"
-And I upload a "csv" format file located at "AlloRand rand_group nonseq.csv", by clicking the button near "Upload allocation table (CSV file) for use in DEVELOPMENT status" to browse for the file, and clicking the button labeled "Upload File" to upload the file
-Then I should see (#rejection is expected, but have been unable to determine what file that is non-sequential and rejected looks like)
-And I upload a "csv" format file located at "AlloRand rand_group nonseq.csv", by clicking the button near "Upload allocation table (CSV file) for use in PRODUCTION status" to browse for the file, and clicking the button labeled "Upload File" to upload the file
-Then I should see (#rejection)
+Scenario: # C.3.30.1000.0100: The system shall preserve the order of allocation entries within each stratification group as uploaded, and use that order for assignment.
+#Test: Upload an allocation table with shuffled or non-numeric redcap_randomization_number values. Validate that runtime assignment follows row upload order.
 
-C.3.30.1000.200: The system shall assign the next available allocation entry sequentially to each new record.
-Scenario:
+Scenario: # C.3.30.1000.0200: The system shall assign the next available allocation entry sequentially to each new record.
+# Test: Upload a table with duplicate values or text labels in redcap_randomization_number. Confirm that upload succeeds and assignments function correctly.
+
 When I click on the link labeled "Project Setup"
 And I click on the button labeled "Setup randomization"
 And I click on the icon labeled "Setup" in the row labeled "1"
@@ -90,6 +80,10 @@ And I click on the button labeled "Randomize"
 Then I should see a dialog containing the following text: "Record ID "9" was randomized for the field "Randomization group" and assigned the value "Placebo" (3)." 
 And I click on the button labeled "Close"
 And I click on the button labeled "Save & Exit Form"
+
+Scenario: # C.3.30.1000.0300: The system shall reject allocation tables missing required structural elements (e.g., target field column, inconsistent stratum combinations).
+# Test: Upload malformed CSV (e.g., missing redcap_randomization_group). Confirm that REDCap rejects the file with a descriptive error.
+
 
 And I logout
 #End
