@@ -1,8 +1,3 @@
-#Question: Question about #C.3.30.1100.0300. Record's randomized value matches allocation table.
-#question: Is it enough to be able to predict what allocation is coming next? Or do we need to "look" at the 
-#allocation table to verify it is the same as what is expected? Since C.3.30.1000.0200 looks at sequential assignment, 
-#which essentially also does this, is it enough to say it was already tested there?
-
 Feature: C.3.30.1100.	User Interface: The system shall ensure users with Randomize rights can execute record randomization.
 # Randomization 
 #C.3.30.1100.0100. User without randomize rights cannot randomize record.  
@@ -66,8 +61,8 @@ Then I should see a dialog containing the following text: "Record ID "6" was ran
 And I click on the button labeled "Close"
 And I click on the button labeled "Save & Exit Form"
 
-#C.3.30.1100.0300. Record's randomized value matches allocation table.  (Also tested in C.3.30.1000 as part of proving sequential assignment)
-#question: Is it enough to be able to predict what allocation is coming next?  Or do we need to "look" at the allocation table to verify it is the same as what is expected?
+# C.3.30.1100.0300. Record's randomized value matches allocation table.  
+# This feature test is REDUNDANT and can be viewed in C.3.30.0200 and C.3.30.0300
 
 #C.3.30.1100.0400 User with randomize rights cannot modify randomized record.
 When I click on the link labeled "Add / Edit Records"
