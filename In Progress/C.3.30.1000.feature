@@ -4,6 +4,7 @@ Question: I'm a bit confused about "C.3.30.1000.100: The system shall prevent up
 #understand what this functional requirement refers to... Can someone clarify what a file with non-sequential 
 #assignment looks like?
 AlloRand rand_group nonseq.csv
+#FR Pending clarification from Luke Stevens
 
 Feature: C.3.30.1000.	User Interface: The system shall support the sequential assignment of allocation table entries to participants based on stratification.
 # Randomization 
