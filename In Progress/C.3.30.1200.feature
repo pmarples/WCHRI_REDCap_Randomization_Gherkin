@@ -1,12 +1,9 @@
-#Question:For #C.3.30.1200.0200. Users with logging privileges and without randomization privileges will not see 
-#record's randomized values.
-#This does not seem to be the case - Users with logging privileges and without randomization privileges CAN see record's 
-#randomized values. (normal unblinded stratified randomization) - should this be only for certain Randomization types?
-
 Feature: C.3.30.1200.	User Interface: The system shall support an audit trail showing who randomized the record and the date-time of randomization.
 # Randomization C.3.30.1200.0100 to C.3.30.1200.0200
 #C.3.30.1200.0100. Logging of record's randomization includes user and timestamp.  
-#C.3.30.1200.0200. Users with logging privileges and without randomization privileges will not see record's randomized values.
+#C.3.30.1200.0200 – Logging includes the target field allocation value.
+#C.3.30.1200.0300 – Allocation group is visible in logging for open models.
+#C.3.30.1200.0400 – Concealed allocation group remains hidden in logging for blinded models.
 
 #SETUP - Create new project
 Scenario:
@@ -38,8 +35,8 @@ And I select "5_NoRand" on the dropdown field labeled "Select Role"
 And I click on the button labeled exactly "Assign"
 Then I should see "User "Test_User2" has been successfully ASSIGNED to the user role "5_NoRand"."
 
-#C.3.30.1200.0100. Logging of record's randomization includes user and timestamp.  
-When I click on the link labeled "Add/Edit Records"
+Scenario: #C.3.30.1200.0100. Logging of record's randomization includes user and timestamp.  
+Given I click on the link labeled "Add/Edit Records"
 And I click on the button labeled "Add new record"
 And I click on the icon labeled "Status" for the row labeled "Randomization" 
 Then I should see a button labeled "Randomize"
@@ -55,12 +52,24 @@ When I click on the link labeled "Logging"
 Then I should see a table header and rows containing the following values in the logging table:
    |Time / Date| Username   | Action        | List of Data Changes OR Fields Exported      |
    | MM-DD-YYYY HH:MM | Test_User1 | Randomize record 6 | Randomize record |
-Given I Logout
+   
+Scenario: #C.3.30.1200.0200 – Logging includes the target field allocation value.
+Given I click on the link labeled "Logging"
+Then I should see a table header and rows containing the following values in the logging table:
+   |Time / Date| Username   | Action        | List of Data Changes OR Fields Exported      |
+   | MM-DD-YYYY HH:MM | Test_User1 | Randomize record 6 | record_id = '6',
+rand_group = '1',
+gender = '0',
+randomization_complete = '0' |
 
-#C.3.30.1200.0200. Users with logging privileges and without randomization privileges will not see record's randomized values.
-Given I login to REDCap with the user "Test_User2"
-And I click on the link labeled "Logging"
-# note - In logging, I should not see record 6's randomized values, but I seem to be able to (in the Create Record row just after the Randomize Record row)
+# Note for Automation: - in the above table I only care about "rand_group = '1'" so if you don't 
+# need the whole thing, then you can leave the rest out. Also, I wasn't sure how to indicate that there 
+# are line breaks.. sorry it looks weird
+
+Scenario: #C.3.30.1200.0300 – Allocation group is visible in logging for open models.
+#Redundant
+
+C.3.30.1200.0400 – Concealed allocation group remains hidden in logging for blinded models.
 
 Given I logout
 #End
