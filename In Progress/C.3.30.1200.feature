@@ -1,5 +1,5 @@
 Feature: C.3.30.1200.	User Interface: The system shall support an audit trail showing who randomized the record and the date-time of randomization.
-# Randomization C.3.30.1200.0100 to C.3.30.1200.0200
+# Randomization 
 #C.3.30.1200.0100. Logging of record's randomization includes user and timestamp.  
 #C.3.30.1200.0200 – Logging includes the target field allocation value.
 #C.3.30.1200.0300 – Allocation group is visible in logging for open models.
