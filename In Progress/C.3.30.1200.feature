@@ -53,17 +53,19 @@ Scenario: #C.3.30.1200.0200 – Logging includes the target field allocation val
 #VERIFY: Logging includes the target field allocation value. 
 And I should see a table header and rows containing the following values in the logging table:
    |Time / Date| Username   | Action        | List of Data Changes OR Fields Exported      |
-   | MM-DD-YYYY HH:MM | Test_User1 | Randomize record 6 | record_id = '6',
+   | MM-DD-YYYY HH:MM | Test_User1 | Randomize record 6 | Randomize record |
+   | MM-DD-YYYY HH:MM | Test_User1 | Create record 6 | record_id = '6',
                                                           rand_group = '1',
                                                           gender = '0',
                                                           randomization_complete = '0' |
 And I should see a table header and rows containing the following values in the logging table:
    |Time / Date| Username   | Action        | List of Data Changes OR Fields Exported      |
-   | MM-DD-YYYY HH:MM | Test_User1 | Randomize record 6 | rand_blind = '1' |
+   | MM-DD-YYYY HH:MM | Test_User1 | Randomize record 6 | Randomize record | 
+   | MM-DD-YYYY HH:MM | Test_User1 | Update record 6 | rand_blind = '1' |
 
-# Note for Automation: - in the above table I only care about "rand_group = '1'" so if you don't 
-# need the whole thing, then you can leave the rest out. Also, I wasn't sure how to indicate that there 
-# are line breaks.. sorry it looks weird
+# Note for Automation: In the above tables, I'm not sure if you need to look for all that I put... 
+#What I need to verify is that "Randomize record" appears 2x and that one time is associated with rand_blind = '1' 
+# and one is associated with rand_group = '1' and that I can see rand_blind = '1' and rand_group = '1'
 
  #C.3.30.1200.0300 – Allocation group is visible in logging for open models.
 # This feature test is REDUNDANT and can be viewed in C.3.30.1200.0200 where "rand_group = '1'"
