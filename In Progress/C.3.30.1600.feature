@@ -81,7 +81,7 @@ Scenario:
 Given I click on the link labeled "Randomization"
 
 #VERIFY: Test user with dashboard rights CAN access randomization dashboard and will see group assignment for open randomization model.
-And I click on an icon labeled "Dashboard" in the row labeled "1"
+And I click on an icon labeled "Dashboard" in the row labeled "2"
 Then I should see a table header and rows containing the following values:
   | Used | Not Used | Allocated records | Randomizaton group |
   | 1    | 4        | 6                 | Drug A (1)         |
