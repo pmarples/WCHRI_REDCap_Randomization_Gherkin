@@ -1,11 +1,3 @@
-#questions pending response:
-#Question 1. I believe .0200 should be "User with dashboard rights CAN access randomization dashboard." 
-##Is this correct? YES - updated in line 10, but needs to be corrected further down.
-#Question 2. I believe that .0200 should be checking that there is access to open, but also that when they look at 
-##blinded, they will see only a concealed allocation code, with no visible group assignment. - Yes this is true too.
-C.3.30.1600.0100 ensures that access is denied when the user lacks the appropriate permission.
-C.3.30.1600.0200 ensures that access is granted when the user has the correct dashboard rights.
-
 Feature: C.3.30.1600.	User Interface: The system shall ensure users with randomization dashboard rights can view the randomization dashboard.	
 # Randomization C.3.30.1600.0100 to C.3.30.1600.0200
 #C.3.30.1600.0100. User without dashboard rights cannot access randomization dashboard.  
@@ -63,7 +55,7 @@ And I click on the button labeled "Close"
 And I click on the button labeled "Save & Exit Form"
 Given I Logout
 
-#C.3.30.1600.0100. User without dashboard rights cannot access randomization dashboard.   
+#C.3.30.1600.0100 ensures that access is denied when the user lacks the appropriate permission.
 Scenario:
 Given I login to REDCap with the user "Test_User2"
 And I click on the link labeled "Randomization"
@@ -74,7 +66,7 @@ And I should not see an icon labeled "Dashboard" in the row labeled "2"
 
 Given I logout
 
-#C.3.30.1600.0200. User with dashboard rights CAN access randomization dashboard.
+C.3.30.1600.0200 ensures that access is granted when the user has the correct dashboard rights. 
 Given I login to REDCap with the user "Test_User1"
 And I click on the link labeled "Randomization"
 
