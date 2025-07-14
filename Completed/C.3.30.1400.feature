@@ -54,3 +54,6 @@ And I should see "Already Randomized" near a field labeled "Blinded randomizatio
 #C.3.30.1400.0200. The system shall prevent a record from being randomized more than once within the same model.
 # This means: The system must prevent re-randomizing a record to the same model once it's been randomized.
 And I should NOT see a button labeled "Randomize"
+
+Given I logout
+#End
