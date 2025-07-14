@@ -66,7 +66,7 @@ And I should not see an icon labeled "Dashboard" in the row labeled "2"
 
 Given I logout
 
-C.3.30.1600.0200 ensures that access is granted when the user has the correct dashboard rights. 
+#C.3.30.1600.0200 ensures that access is granted when the user has the correct dashboard rights. 
 Given I login to REDCap with the user "Test_User1"
 And I click on the link labeled "Randomization"
 
