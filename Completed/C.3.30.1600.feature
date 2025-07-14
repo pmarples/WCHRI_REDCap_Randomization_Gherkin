@@ -1,5 +1,5 @@
 Feature: C.3.30.1600.	User Interface: The system shall ensure users with randomization dashboard rights can view the randomization dashboard.	
-# Randomization C.3.30.1600.0100 to C.3.30.1600.0200
+# Randomization
 #C.3.30.1600.0100. User without dashboard rights cannot access randomization dashboard.  
 #C.3.30.1600.0200 – User with dashboard rights can access the randomization dashboard.
 
