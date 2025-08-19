@@ -1,1 +1,66 @@
-X.2.25.1200 The system shall support assigning users that are both in the record's DAG and assigned to the record's DAG via DAG Switcher to data queries about the record.
+Feature: X.2.25.1200 The system shall support assigning users that are both in the record's DAG and assigned to the record's DAG via DAG Switcher to data queries about the record.
+#Data Quality 
+#Scenarios in this document:
+#X.2.25.1200.0100  User in the same DAG as record can be assigned to a query for the record
+#X.2.25.1200.0200  User in different DAG as record and no access to other DAGs via the DAG 
+#switcher cannot be assigned to a query for the record.
+#X.2.25.1200.0300 User in diferent DAG as record but has access the same DAG as record via 
+#the DAG switcher can be assigned to a query for the record.
+#X.2.25.1200.0400  User in a different DAG as the record, access to the DAG switcher, but 
+#not access to the same DAG as record via the DAG switcher cannot be assigned to a query for the record.
+
+As a REDCap end user
+I want to see that Data Quality is functioning as expected
+
+Scenario:#SETUP - Create new project
+Given I login to REDCap with the user "Test_User1"
+And I create a new project named "X.2.25.1200" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "X.2.25.1200 Simple.xml", and clicking the "Create Project" button
+
+Scenario: #SETUP- Assign rights for user in a DAG / No DAG Switcher
+When I click on the link labeled "User Rights"
+And I click on the link labeled "Test_User1" 
+And I click on the button labeled "Assign to role"
+And I select "1_FullRights" on the dropdown field labeled "select role"
+And I click on the button labeled exactly "Assign"
+Then I should see "User "Test_User1" has been successfully ASSIGNED to the user role "1_FullRights"."
+When I click on the link labeled "Data Access Groups"
+And I select "Test_User1" on the dropdown field labeled "Select User"
+And I select "Alberta" on the dropdown field labeled "[No Assignment]"
+And I click on the button labeled exactly "Assign"
+Then I should see "Test_User1" in the row labeled "Alberta"
+
+Scenario: #SETUP Assign rights for User in DAG and another DAG with the DAG Switcher
+#TEST User 2 to Ontario 
+
+Scenario: #SETUP- Assign rights for user in a different DAG / No DAG Switcher
+#Test User 3 to Ontario and in DAG Switcher: Alberta
+
+Scenario: #SETUP- Assign rights for user in a different DAG and another DAG with DAG Switcher
+#Test User 4 to Ontario and in DAG Switcher:British Columbia
+
+Scenario: #X.2.25.1200.0100  User in the same DAG as record can be assigned to a query for the record
+#In Record 1, open query and assign to Test User 1
+
+Scenario: #VERIFY: Test User 1 can see the query
+
+Scenario: #X.2.25.1200.0200  User in different DAG as record and no access to other DAGs via the DAG 
+#switcher cannot be assigned to a query for the record.
+#In Record 1, open query and assign to Test User 2
+
+Scenario: #VERIFY: Unable to assign query to Test User 2
+
+#X.2.25.1200.0300 User in diferent DAG as record but has access the same DAG as record via 
+#the DAG switcher can be assigned to a query for the record.
+#In Record 1, open query and assign to Test User 3
+
+Scenario: #VERIFY: Test User 3 can see the query
+
+#X.2.25.1200.0400  User in a different DAG as the record, access to the DAG switcher, but 
+#not access to the same DAG as record via the DAG switcher cannot be assigned to a query for the record.
+
+#In Record 1, open query and assign to Test User 4
+
+Scenario: #VERIFY: Unable to assign to test User 4
+
+Given I logout
+#END
