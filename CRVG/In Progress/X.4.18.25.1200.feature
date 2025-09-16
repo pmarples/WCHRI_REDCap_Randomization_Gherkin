@@ -20,7 +20,7 @@ I want to see that Data Quality is functioning as expected
 
 Scenario:#SETUP - Create new project
 Given I login to REDCap with the user "Test_User1"
-And I create a new project named "X.4.18.25.1200" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "X.2.25.1200 Simple.xml", and clicking the "Create Project" button
+And I create a new project named "X.4.18.25.1200" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "X.4.18.25.1200 Simple.xml", and clicking the "Create Project" button
 
 #Scenario: #SETUP- Assign rights for primary User / No DAG
 #Test User 1 to 1_FullRights / No DAG Assignment.
