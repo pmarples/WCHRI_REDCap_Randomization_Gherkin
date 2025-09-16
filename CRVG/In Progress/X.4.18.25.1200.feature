@@ -1,4 +1,4 @@
-Feature: X.4.25.1200 The system shall support assigning users that are both in the record's DAG and assigned to the record's DAG via DAG Switcher to data queries about the record.
+Feature: X.4.18.25.1200 The system shall support assigning users that are both in the record's DAG and assigned to the record's DAG via DAG Switcher to data queries about the record.
 #Data Quality 
 #Scenarios in this document:
 #X.4.25.1200.0100  User in the same DAG as record can be assigned to a query for the record
@@ -20,7 +20,7 @@ I want to see that Data Quality is functioning as expected
 
 Scenario:#SETUP - Create new project
 Given I login to REDCap with the user "Test_User1"
-And I create a new project named "X.4.25.1200" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "X.2.25.1200 Simple.xml", and clicking the "Create Project" button
+And I create a new project named "X.4.18.25.1200" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "X.2.25.1200 Simple.xml", and clicking the "Create Project" button
 
 #Scenario: #SETUP- Assign rights for primary User / No DAG
 #Test User 1 to 1_FullRights / No DAG Assignment.
@@ -88,7 +88,7 @@ And I click on the button labeled exactly "Assign"
 #EN# When I click on "British Columbia" for the user "Test_User5" in the DAG Switcher 
 #EN# Then I should see a checkbox in the row labeled "British Columbia" in the column labeled "Test_User5" in the DAGs Switcher
 
-Scenario: #X.4.25.1200.0100  User in the same DAG as record can be assigned to a query for the record
+Scenario: #X.4.18.25.1200.0100  User in the same DAG as record can be assigned to a query for the record
 #In Record 1, open query and assign to Test User 2
 Given I click on the link labeled "Add/Edit Records"
 And I Select "1" from the dropdown labled "Choose an existing Study ID"
@@ -114,7 +114,7 @@ When I click on the button labeled "Cancel"
 
 Given I logout
 
-Scenario: #X.4.25.1200.0200  User in different DAG as record and no access to other DAGs via the DAG 
+Scenario: #X.4.18.25.1200.0200  User in different DAG as record and no access to other DAGs via the DAG 
 #switcher cannot be assigned to a query for the record.
 #In Record 1, open query and attempt to assign to Test User 3 
 Given I login to REDCap with the user "Test_User1"
@@ -129,7 +129,7 @@ And I click on the button labeled "Cancel"
 
 Given I Logout.
 
-#X.4.25.1200.0300 User in diferent DAG as record but has access the same DAG as record via 
+#X.4.18.25.1200.0300 User in diferent DAG as record but has access the same DAG as record via 
 #the DAG switcher can be assigned to a query for the record.
 #In Record 1, open query and assign to Test User 4
 
@@ -156,7 +156,7 @@ When I click on the button labeled "comment"
 #EN# Then I see a popup labeled "Data Resolution Workflow"
 When I click on the button labeled "Cancel"
 
-#X.4.25.1200.0400  User in a different DAG as the record, access to the DAG switcher, but 
+#X.4.18.25.1200.0400  User in a different DAG as the record, access to the DAG switcher, but 
 #not access to the same DAG as record via the DAG switcher cannot be assigned to a query for the record.
 
 #In Record 1, open query and assign to Test User 5
