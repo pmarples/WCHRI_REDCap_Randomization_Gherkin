@@ -1,12 +1,12 @@
 Feature: X.4.18.25.1200 The system shall support assigning users that are both in the record's DAG and assigned to the record's DAG via DAG Switcher to data queries about the record.
 #Data Quality 
 #Scenarios in this document:
-#X.4.25.1200.0100  User in the same DAG as record can be assigned to a query for the record
-#X.4.25.1200.0200  User in different DAG as record and no access to other DAGs via the DAG 
+#X.4.18.25.1200.0100  User in the same DAG as record can be assigned to a query for the record
+#X.4.18.25.1200.0200  User in different DAG as record and no access to other DAGs via the DAG 
 #switcher cannot be assigned to a query for the record.
-#X.4.25.1200.0300 User in different DAG as record but has access the same DAG as record via 
+#X.4.18.25.1200.0300 User in different DAG as record but has access the same DAG as record via 
 #the DAG switcher can be assigned to a query for the record.
-#X.4.25.1200.0400  User in a different DAG as the record, access to the DAG switcher, but 
+#X.4.18.25.1200.0400  User in a different DAG as the record, access to the DAG switcher, but 
 #not access to the same DAG as record via the DAG switcher cannot be assigned to a query for the record.
 
 ##NOTE##
