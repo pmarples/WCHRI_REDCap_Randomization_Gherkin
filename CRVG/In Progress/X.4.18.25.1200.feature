@@ -34,7 +34,7 @@ Then I should see "User "Test_User1" has been successfully ASSIGNED to the user 
 Scenario: #SETUP- Assign rights for user in a DAG / No DAG Switcher
 #Test User 2 to Alberta DAG
 Given I click on the link labeled "User Rights"
-And I click on the link labeled "Test_User2" 
+And I enter "Test_User2" into the field labeled "Assign new user to role"
 And I click on the button labeled "Assign to role"
 And I select "1_FullRights" on the dropdown field labeled "select role"
 And I click on the button labeled exactly "Assign"
@@ -50,20 +50,20 @@ Scenario: #SETUP Assign rights for User in different DAG and another DAG with th
 Given I click on the link labeled "User Rights"
 And I enter "Test_User3" into the field labeled "Assign new user to role"
 And I click on the button labeled "Assign to role"
-And I select "2_Edit_FullExport" and click the button labeled "Assign to role"
+And I select "2_Edit_FullExport" and click the button labeled "Assign"
 Then I should see "User "Test_User3" has been successfully ASSIGNED to the user role "2_Edit_FullExport"."
 When I click on the link labeled "Data Access Groups"
 And I select "Test_User3" on the dropdown field labeled "Select User"
 And I select "Ontario" on the dropdown field labeled "[No Assignment]"
 And I click on the button labeled exactly "Assign"
-#EN# Then I should see "Test_User2" in the row labeled "Ontario"
+#EN# Then I should see "Test_User3" in the row labeled "Ontario"
 
 Scenario: #SETUP- Assign rights for user in a different DAG / DAG Switcher in Same DAG
 #Test User 4 to Ontario and DAG Switcher to Alberta
 Given I click on the link labeled "User Rights"
 And I enter "Test_User4" into the field labeled "Assign new user to role"
 And I click on the button labeled "Assign to role"
-And I select "2_Edit_FullExport" and click the button labeled "Assign to role"
+And I select "2_Edit_FullExport" and click the button labeled "Assign"
 Then I should see "User "Test_User4" has been successfully ASSIGNED to the user role "2_Edit_FullExport"."
 When I click on the link labeled "Data Access Groups"
 And I select "Test_User4" on the dropdown field labeled "Select User"
@@ -78,7 +78,7 @@ Scenario: #SETUP- Assign rights for user in a different DAG and another differen
 Given I click on the link labeled "User Rights"
 And I enter "Test_User5" into the field labeled "Assign new user to role"
 And I click on the button labeled "Assign to role"
-And I select "2_Edit_FullExport" and click the button labeled "Assign to role"
+And I select "2_Edit_FullExport" and click the button labeled "Assign"
 Then I should see "User "Test_User5" has been successfully ASSIGNED to the user role "2_Edit_FullExport"."
 When I click on the link labeled "Data Access Groups"
 And I select "Test_User5" on the dropdown field labeled "Select User"
@@ -127,14 +127,11 @@ And I click on the button labeled "Status" in the Row labeled "Demographics"
 #EN# Then I DO NOT see the option "Test_User3" in the field labeled "Assign query to a user (optional):"
 And I click on the button labeled "Cancel"
 
-Given I Logout.
-
 #X.4.18.25.1200.0300 User in diferent DAG as record but has access the same DAG as record via 
 #the DAG switcher can be assigned to a query for the record.
 #In Record 1, open query and assign to Test User 4
 
-Given I login to REDCap with the user "Test_User1"
-And I click on the link labeled "Add/Edit Records"
+Given I click on the link labeled "Add/Edit Records"
 And I Select "1" from the dropdown labled "Choose an existing Study ID"
 And I click on the button labeled "Status" in the Row labeled "Demographics"
 #EN# And I click on the bubble labled "View Data Resolution Workflow" near the field labeled "Comments"
@@ -164,7 +161,7 @@ Given I login to REDCap with the user "Test_User1"
 And I click on the link labeled "Add/Edit Records"
 And I Select "1" from the dropdown labled "Choose an existing Study ID"
 And I click on the button labeled "Status" in the Row labeled "Demographics"
-#EN# And I click on the bubble labled "View Data Resolution Workflow" near the field labeled "Comments"
+#EN# And I click on the bubble labled "View Data Resolution Workflow" near the field labeled "Gender"
 #EN# And I click on the radio button option "Open Query"
 #VERIFY: Unable to assign query to Test User 5
 #EN# Then I DO NOT see the option "Test_User5" in the field labeled "Assign query to a user (optional):"
