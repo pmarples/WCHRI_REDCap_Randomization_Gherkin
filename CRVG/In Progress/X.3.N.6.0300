@@ -1,0 +1,3 @@
+X.3.N.6.0300 The system shall support the ability to use conditional logic to disable specific data entry forms in repeating events (does not apply to repeating instruments)
+X.3.N.6.0300.0100 form displays when form in repeating event is configured to show
+X.3.N.6.0300.0200 form disabled when form in repeating event should be disabled.
