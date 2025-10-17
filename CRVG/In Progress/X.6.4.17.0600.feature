@@ -32,7 +32,7 @@ Scenario:#X.6.4.17.0600.0100 time between project deletion and purging can be ch
 Given I login to REDCap with the user "Admin_User"
 And I click on the link labeled "Control Center"
 And I click on the link labeled "General Configuration"
-And I enter "1" in the field labeled "Number of days between project deletion and purging the project from the system
+And I enter "1" in the field labeled "Number of days between project deletion and purging the project from the system"
 And I click on the button labeled "Save Changes"
 Then I should see "Your system configuration values have now been changed!"
 
