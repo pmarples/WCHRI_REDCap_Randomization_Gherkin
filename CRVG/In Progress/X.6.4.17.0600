@@ -1,0 +1,41 @@
+Feature: X.6.4.17.0600 The system shall support the ability for the Administrator to  change the  time between project deletion and purging the project from the system.
+#Project Status and Other Functionality
+#Scenarios in this document:
+#X.6.4.17.0600.0100 time between project deletion and purging can be changed to 1 day (verify purge after 1 day)
+
+##NOTE##
+## Not knowing the correct Gherkin Syntax, I've denoted the lines I think are wrong and I made up "English" with '#EN#' 
+##annotations so they are easier to find when someone goes through to correct the Gherkin
+## The English lines with a single "#" annotation are meant to stay in the Gherkin script as comments.
+########
+
+As a REDCap end user
+I want to see that Data Quality is functioning as expected
+
+Scenario:#SETUP - Create new project
+Given I login to REDCap with the user "Test_User1"
+And I create a new project named "X.6.4.17.0600" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "X.6.4.17.0600.xml", and clicking the "Create Project" button
+
+Scenario: #SETUP- Assign rights for primary User 
+#Test User 1 to 1_FullRights 
+Given I click on the link labeled "User Rights"
+And I click on the link labeled "Test_User1" 
+And I click on the button labeled "Assign to role"
+And I select "1_FullRights" on the dropdown field labeled "select role"
+And I click on the button labeled exactly "Assign"
+Then I should see "User "Test_User1" has been successfully ASSIGNED to the user role "1_FullRights"."
+
+Scenario:#X.6.4.17.0600.0100 time between project deletion and purging can be changed to 1 day (verify purge after 1 day)
+#Delete project
+Given I click on the link labeled "Project Home" 
+And I click on the link labeled "Other Functionality"
+And I click on the link labeled "Delete the Project"
+And I enter "delete" in the field labeled "TYPE "DELETE" BELOW"
+And I click the button labeled "Delete the project"
+And I click the button lebeled "CONFIRM DELETION"
+Then I should see "Project successfully deleted!"
+When I click close
+And I logout
+
+#
+#
