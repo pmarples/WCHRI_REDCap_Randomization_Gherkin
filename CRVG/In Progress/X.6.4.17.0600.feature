@@ -48,10 +48,11 @@ And I enter "delete" in the field labeled "TYPE "DELETE" BELOW"
 And I click the button labeled "Delete the project"
 And I click the button labeled "CONFIRM DELETION"
 Then I should see "Project successfully deleted!"
+#Note to Manual tester: please record the date/time of deletion
 And I click the button labeled "Close"
 Given I Logout
 
-Scenario: #check that the project is scheduled for deletion in 1 day
+Scenario: #VERIFY: that the project is scheduled for deletion in 1 day
 Given I login to REDCap with the user "Admin_User"
 And I click on the link labeled "Control Center"
 And I click on the link labeled "Browse Projects"
@@ -62,7 +63,7 @@ And I should see "Will be permanently deleted on" #EN# with a date 24 hours from
 
 Given I logout
 
-#EN# And I wait until after the time specified
+#EN# Given I wait until after the time specified
 
 #VERIFY: Project purged after time specified
 Given I login to REDCap with the user "Admin_User"
